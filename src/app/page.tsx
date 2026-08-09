@@ -99,9 +99,8 @@ export default function Home() {
                 <Image
                   src="/images/BD_group.png"
                   alt="Billennium Divas Fund Event - Women Entrepreneurs"
-                  width={900}
-                  height={700}
-                  sizes="(max-width: 1024px) 100vw, 45vw"
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 45vw"
                   className={styles.heroImage}
                   priority
                 />
@@ -156,7 +155,7 @@ export default function Home() {
                   height={400}
                   className={styles.eventPhoto}
                 />
-                <div className={styles.imageCaption}>
+                <div className={styles.manifestoCaption}>
                   <span className={styles.captionDot}></span>
                   Founded 2017 • Hyderabad, India
                 </div>
@@ -215,7 +214,11 @@ export default function Home() {
                   We invest at the early stage with ticket sizes from ₹25L to ₹5Cr
                 </p>
               </div>
-              <a href="mailto:pitch@billenniumdivas.fund" className={styles.btnPrimary}>
+              <a
+                href="mailto:pitch@billenniumdivas.fund"
+                className={styles.btnPrimary}
+                onMouseMove={handleMouseMove}
+              >
                 <span>Submit Your Pitch</span>
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                   <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
@@ -285,37 +288,6 @@ export default function Home() {
       <Stats />
       <Testimonials />
       <MediaStrip />
-
-      {/* Final CTA with Animated Background */}
-      {/* <section className={styles.finalCta}>
-        <div className={styles.ctaBackground}>
-          <div className={styles.ctaOrb1}></div>
-          <div className={styles.ctaOrb2}></div>
-        </div>
-        <div className="container">
-          <div className={styles.ctaWrapper} data-aos="zoom-in">
-            <h2 className={styles.finalCtaTitle}>
-              Your <span className={styles.gradientText}>billion-dollar</span> journey
-              <br />
-              starts <span className={styles.gradientText}>here</span>
-            </h2>
-            <p className={styles.finalCtaText}>
-              Join 120+ women founders who chose Billennium Divas as their funding partner
-            </p>
-            <div className={styles.finalCtaActions}>
-              <Link href="/contact" className={styles.btnPrimary}>
-                <span>Apply Now</span>
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                  <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </Link>
-              <Link href="/about" className={styles.btnGlass}>
-                <span>Learn More</span>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section> */}
     </>
   );
 }

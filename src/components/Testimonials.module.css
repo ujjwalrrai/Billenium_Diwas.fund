@@ -1,4 +1,3 @@
-/* Infinite Scroll Animation */
 @keyframes scroll {
   0% {
     transform: translateX(0);
@@ -33,7 +32,6 @@
   font-size: clamp(28px, 4vw, 42px);
 }
 
-/* Scrolling Container */
 .scrollContainer {
   width: 100%;
   overflow: hidden;
@@ -41,7 +39,6 @@
   padding: 0 0 20px;
 }
 
-/* Fade effect on edges */
 .scrollContainer::before,
 .scrollContainer::after {
   content: '';
@@ -63,7 +60,6 @@
   background: linear-gradient(to left, var(--cream), transparent);
 }
 
-/* Scrolling Track */
 .scrollTrack {
   display: flex;
   gap: 20px;
@@ -71,12 +67,10 @@
   width: fit-content;
 }
 
-/* Pause animation on hover */
 .scrollTrack:hover {
   animation-play-state: paused;
 }
 
-/* Card Styles */
 .card {
   background: #fff;
   border: 1px solid var(--line);
@@ -153,27 +147,51 @@
   margin-top: 2px;
 }
 
+@media (max-width: 900px) {
+  .section {
+    padding: 64px 0;
+  }
+
+  .head {
+    margin-bottom: 40px;
+  }
+}
+
 @media (max-width: 768px) {
   .card {
-    width: 320px;
-    min-width: 320px;
+    width: 300px;
+    min-width: 300px;
     height: 300px;
+    padding: 24px 20px;
   }
-  
+
   .scrollContainer::before,
   .scrollContainer::after {
-    width: 80px;
+    width: 60px;
+  }
+
+  .scrollTrack {
+    animation-duration: 42s;
   }
 }
 
 @media (max-width: 480px) {
-  .card {
-    width: 280px;
-    min-width: 280px;
+  .section {
+    padding: 48px 0;
   }
-  
+
+  .head {
+    margin-bottom: 28px;
+  }
+
+  .card {
+    width: 260px;
+    min-width: 260px;
+    height: 290px;
+  }
+
   .scrollContainer::before,
   .scrollContainer::after {
-    width: 40px;
+    width: 32px;
   }
 }

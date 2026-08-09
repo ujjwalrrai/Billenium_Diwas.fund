@@ -1147,3 +1147,21 @@
 .btnGlass:hover::after {
   opacity: 1;
 }
+@media (max-width: 640px) {
+  .manifesto,
+  .focus,
+  .team {
+    padding: 64px 0;
+  }
+
+  .manifestoLayout,
+  .focusHeader,
+  .teamHeader {
+    margin-bottom: 40px;
+  }
+
+  .glassCard,
+  .milestoneCard {
+    padding: 28px 22px;
+  }
+}

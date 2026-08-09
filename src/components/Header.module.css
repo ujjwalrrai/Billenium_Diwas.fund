@@ -171,6 +171,10 @@
     display: flex;
   }
 
+  .header {
+    padding: 14px 0;
+  }
+
   .pill {
     gap: 16px;
     padding: 8px 8px 8px 18px;
@@ -183,9 +187,9 @@
 
   .mobileNav {
     position: fixed;
-    top: 78px;
-    left: 20px;
-    right: 20px;
+    top: 66px;
+    left: 16px;
+    right: 16px;
     max-height: 0;
     overflow: hidden;
     background: rgba(255, 255, 255, 0.97);
@@ -203,6 +207,7 @@
     gap: 2px;
     max-height: 420px;
     padding: 12px 20px 20px;
+    overflow-y: auto;
   }
 
   .mobileNav a {

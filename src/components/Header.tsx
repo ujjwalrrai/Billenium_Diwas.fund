@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import styles from './Header.module.css';
 
 const NAV_LINKS = [
@@ -16,13 +17,35 @@ const NAV_LINKS = [
 export default function Header() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     const onScroll = () => setScrolled(window.scrollY > 8);
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = open ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [open]);
+
+  const mobileMenu = (
+    <div className={`${styles.mobileNav} ${open ? styles.open : ''}`}>
+      {NAV_LINKS.map((link) => (
+        <Link key={link.label} href={link.href} onClick={() => setOpen(false)}>
+          {link.label}
+        </Link>
+      ))}
+      <Link href="#" className={styles.mobileCta} onClick={() => setOpen(false)}>
+        Nominate Now
+      </Link>
+    </div>
+  );
 
   return (
     <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`}>
@@ -30,12 +53,12 @@ export default function Header() {
         <div className={styles.pill}>
           <Link href="/" className={styles.logo} onClick={() => setOpen(false)}>
             <Image
-                src="/images/logo.png"
-      alt="Billennium Divas"
-      width={120}
-      height={60}
-      className={styles.logoImg}
-      priority
+              src="/images/logo.png"
+              alt="Billennium Divas"
+              width={120}
+              height={60}
+              className={styles.logoImg}
+              priority
             />
           </Link>
 
@@ -66,16 +89,7 @@ export default function Header() {
         </div>
       </div>
 
-      <div className={`${styles.mobileNav} ${open ? styles.open : ''}`}>
-        {NAV_LINKS.map((link) => (
-          <Link key={link.label} href={link.href} onClick={() => setOpen(false)}>
-            {link.label}
-          </Link>
-        ))}
-        <Link href="#" className={styles.mobileCta} onClick={() => setOpen(false)}>
-          Nominate Now
-        </Link>
-      </div>
+      {mounted && createPortal(mobileMenu, document.body)}
     </header>
   );
 }
