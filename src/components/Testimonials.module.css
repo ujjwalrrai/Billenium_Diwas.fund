@@ -1,0 +1,179 @@
+/* Infinite Scroll Animation */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.section {
+  background: var(--cream);
+  padding: 100px 0;
+  overflow: hidden;
+}
+
+.head {
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.eyebrow {
+  display: inline-block;
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--berry);
+  margin-bottom: 14px;
+}
+
+.title {
+  font-size: clamp(28px, 4vw, 42px);
+}
+
+/* Scrolling Container */
+.scrollContainer {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  padding: 0 0 20px;
+}
+
+/* Fade effect on edges */
+.scrollContainer::before,
+.scrollContainer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 20px;
+  width: 150px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.scrollContainer::before {
+  left: 0;
+  background: linear-gradient(to right, var(--cream), transparent);
+}
+
+.scrollContainer::after {
+  right: 0;
+  background: linear-gradient(to left, var(--cream), transparent);
+}
+
+/* Scrolling Track */
+.scrollTrack {
+  display: flex;
+  gap: 20px;
+  animation: scroll 60s linear infinite;
+  width: fit-content;
+}
+
+/* Pause animation on hover */
+.scrollTrack:hover {
+  animation-play-state: paused;
+}
+
+/* Card Styles */
+.card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 30px 26px;
+  position: relative;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  flex-shrink: 0;
+  width: 380px;
+  min-width: 380px;
+  height: 280px;
+  display: flex;
+  flex-direction: column;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -20px rgba(45, 27, 51, 0.25);
+  border-color: var(--gold);
+}
+
+.quoteMark {
+  font-family: var(--font-display);
+  font-size: 46px;
+  color: var(--gold);
+  line-height: 1;
+  font-style: italic;
+  margin-bottom: 6px;
+}
+
+.quote {
+  font-size: 14.5px;
+  color: rgba(26, 20, 32, 0.78);
+  margin-bottom: 22px;
+  flex: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.person {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-top: 1px solid var(--line);
+  padding-top: 16px;
+  margin-top: auto;
+}
+
+.avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--berry), var(--plum));
+  color: var(--cream);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 15px;
+  flex-shrink: 0;
+}
+
+.name {
+  font-size: 14.5px;
+  font-weight: 700;
+}
+
+.role {
+  font-size: 12.5px;
+  color: rgba(26, 20, 32, 0.55);
+  margin-top: 2px;
+}
+
+@media (max-width: 768px) {
+  .card {
+    width: 320px;
+    min-width: 320px;
+    height: 300px;
+  }
+  
+  .scrollContainer::before,
+  .scrollContainer::after {
+    width: 80px;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    width: 280px;
+    min-width: 280px;
+  }
+  
+  .scrollContainer::before,
+  .scrollContainer::after {
+    width: 40px;
+  }
+}

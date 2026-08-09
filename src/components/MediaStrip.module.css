@@ -1,0 +1,46 @@
+.section {
+  background: var(--sand);
+  padding: 64px 0;
+}
+
+.head {
+  text-align: center;
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(26, 20, 32, 0.55);
+  margin-bottom: 36px;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 56px;
+  flex-wrap: wrap;
+}
+
+.brand {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--plum);
+  opacity: 0.55;
+  transition: opacity 0.2s ease;
+  letter-spacing: 0.01em;
+}
+
+.brand:hover {
+  opacity: 1;
+}
+
+@media (max-width: 700px) {
+  .row {
+    gap: 30px;
+  }
+  .brand {
+    font-size: 17px;
+  }
+}

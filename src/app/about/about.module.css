@@ -1,0 +1,202 @@
+.section {
+  padding: 100px 0;
+}
+
+.alt {
+  background: var(--sand);
+}
+
+.sectionEyebrow {
+  display: inline-block;
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--berry);
+  margin-bottom: 18px;
+}
+
+/* THE FUND */
+.fundGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.fundTitle {
+  font-size: clamp(28px, 3.6vw, 40px);
+  font-style: italic;
+  color: var(--plum);
+  margin-bottom: 22px;
+}
+
+.fundBody p {
+  font-size: 16px;
+  color: rgba(26, 20, 32, 0.78);
+  margin-bottom: 16px;
+}
+
+.statCard {
+  background: var(--plum);
+  color: var(--cream);
+  border-radius: 8px;
+  padding: 40px;
+}
+
+.statBig {
+  font-family: var(--font-display);
+  font-size: 54px;
+  color: var(--gold-bright);
+  font-style: italic;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.statCard p {
+  font-size: 14px;
+  color: rgba(251, 247, 242, 0.7);
+  line-height: 1.7;
+}
+
+.statDivider {
+  height: 1px;
+  background: var(--line-light);
+  margin: 26px 0;
+}
+
+.figRow {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  padding: 10px 0;
+  border-top: 1px solid var(--line-light);
+}
+
+.figRow:first-child {
+  border-top: none;
+}
+
+.figRow span:last-child {
+  color: var(--gold-bright);
+  font-weight: 700;
+}
+
+/* PARTNERS */
+.logoRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+}
+
+.logoPill {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 14px 28px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--plum);
+  background: #fff;
+}
+
+/* TEAM / ADVISORS */
+.peopleGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.personCard {
+  text-align: center;
+}
+
+.personAvatar {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 8px;
+  background: linear-gradient(150deg, var(--berry), var(--plum));
+  color: var(--cream);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 34px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.personName {
+  font-family: var(--font-display);
+  font-size: 17px;
+  margin-bottom: 4px;
+}
+
+.personRole {
+  font-size: 12.5px;
+  color: var(--berry);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  line-height: 1.5;
+}
+
+/* INITIATIVES / EVENTS */
+.twoCol {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+
+.initCard {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 34px;
+}
+
+.initCard h3 {
+  font-family: var(--font-display);
+  font-size: 20px;
+  color: var(--plum);
+  margin-bottom: 12px;
+}
+
+.initCard p {
+  font-size: 14.5px;
+  color: rgba(26, 20, 32, 0.72);
+}
+
+.eventPills {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 26px;
+}
+
+.eventPill {
+  background: var(--gold);
+  color: var(--plum-deep);
+  font-weight: 700;
+  font-size: 12.5px;
+  letter-spacing: 0.03em;
+  padding: 9px 16px;
+  border-radius: 999px;
+}
+
+@media (max-width: 980px) {
+  .fundGrid,
+  .twoCol {
+    grid-template-columns: 1fr;
+  }
+  .peopleGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .peopleGrid {
+    grid-template-columns: 1fr;
+    max-width: 280px;
+    margin: 0 auto;
+  }
+}
