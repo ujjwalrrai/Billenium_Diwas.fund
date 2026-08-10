@@ -77,6 +77,33 @@
   position: absolute;
   inset: 0;
   overflow: hidden;
+  --mouse-x: 50%;
+  --mouse-y: 50%;
+}
+
+/* Mouse-following light purple gradient */
+.heroBackground::after {
+  content: '';
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle, 
+    rgba(168, 85, 247, 0.4) 0%, 
+    rgba(168, 85, 247, 0.3) 20%, 
+    rgba(168, 85, 247, 0.2) 35%, 
+    rgba(168, 85, 247, 0.1) 50%,
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: 5;
+  left: var(--mouse-x);
+  top: var(--mouse-y);
+  transform: translate(-50%, -50%);
+  filter: blur(80px);
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
 }
 
 .gradientOrb1 {
@@ -345,6 +372,9 @@
   position: relative;
   animation: slideInRight 0.8s ease-out;
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .heroImageWrapper {
@@ -1045,6 +1075,11 @@
   .bento1, .bento2, .bento3, .bento4 {
     grid-column: span 1;
     grid-row: span 1;
+  }
+
+  /* Disable mouse gradient effect on tablets/mobile */
+  .heroBackground::after {
+    display: none;
   }
 }
 

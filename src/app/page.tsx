@@ -42,10 +42,24 @@ export default function Home() {
     card.style.setProperty('--mouse-y', `${y}%`);
   };
 
+  const handleHeroBackgroundMove = (e: MouseEvent<HTMLDivElement>) => {
+    const hero = e.currentTarget;
+    const rect = hero.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    // Find the heroBackground element and update its CSS variables
+    const background = hero.querySelector(`.${styles.heroBackground}`) as HTMLElement;
+    if (background) {
+      background.style.setProperty('--mouse-x', `${x}px`);
+      background.style.setProperty('--mouse-y', `${y}px`);
+    }
+  };
+
   return (
     <>
       {/* Hero Section */}
-      <section className={styles.hero}>
+      <section className={styles.hero} onMouseMove={handleHeroBackgroundMove}>
         <div className={styles.heroBackground}>
           <div className={styles.gradientOrb1}></div>
           <div className={styles.gradientOrb2}></div>
@@ -100,18 +114,10 @@ export default function Home() {
                   src="/images/BD_group.png"
                   alt="Billennium Divas Fund Event - Women Entrepreneurs"
                   fill
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 45vw"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 200vw, 45vw"
                   className={styles.heroImage}
                   priority
                 />
-              </div>
-
-              <div className={styles.imageCaption}>
-                <span className={styles.cardIcon}>✨</span>
-                <div>
-                  <div className={styles.cardTitle}>GES 2017</div>
-                  <div className={styles.cardText}>Launched at Global Entrepreneurship Summit</div>
-                </div>
               </div>
             </div>
           </div>
@@ -147,19 +153,7 @@ export default function Home() {
                 </p>
               </div>
 
-              <div className={styles.manifestoImage} data-aos="fade-up" data-aos-delay="200">
-                <Image
-                  src="/images/manifesto-event.jpg"
-                  alt="Billennium Divas event"
-                  width={700}
-                  height={400}
-                  className={styles.eventPhoto}
-                />
-                <div className={styles.manifestoCaption}>
-                  <span className={styles.captionDot}></span>
-                  Founded 2017 • Hyderabad, India
-                </div>
-              </div>
+              
             </div>
           </div>
         </div>
@@ -244,26 +238,26 @@ export default function Home() {
           <div className={styles.teamGrid}>
             <div className={styles.teamCards} data-aos="fade-right">
               <div className={styles.memberCard}>
-                <div className={styles.memberName}>Tapaswi Patel</div>
-                <div className={styles.memberRole}>Founder & Managing Partner</div>
+                <div className={styles.memberName}>Bhavesh Kothari</div>
+                <div className={styles.memberRole}>Founder & Director</div>
               </div>
               <div className={styles.memberCard}>
                 <div className={styles.memberName}>Minal Kothari</div>
-                <div className={styles.memberRole}>Co-Founder & Partner</div>
+                <div className={styles.memberRole}>Co-Founder & Director</div>
               </div>
               <div className={styles.memberCard}>
-                <div className={styles.memberName}>Bhavesh Kothari</div>
-                <div className={styles.memberRole}>Co-Founder & Partner</div>
+                <div className={styles.memberName}>Pratik Lalani</div>
+                <div className={styles.memberRole}>Entrepreneur In Residence</div>
               </div>
               <div className={styles.memberCard}>
-                <div className={styles.memberName}>Shweta Shalini</div>
-                <div className={styles.memberRole}>Chief Investment Officer</div>
+                <div className={styles.memberName}>Purvang Joshi</div>
+                <div className={styles.memberRole}>Entrepreneur In Residence</div>
               </div>
             </div>
 
             <div className={styles.teamVisual} data-aos="fade-left" data-aos-delay="200">
               <Image
-                src="/images/team-event.jpg"
+                src="/images/team-event.png"
                 alt="Billennium Divas founding team"
                 width={600}
                 height={700}
@@ -272,16 +266,6 @@ export default function Home() {
             </div>
           </div>
 
-          <div className={styles.milestoneCard} data-aos="zoom-in" data-aos-delay="400">
-            <div className={styles.milestoneIcon}>🏆</div>
-            <div className={styles.milestoneContent}>
-              <h3 className={styles.milestoneTitle}>Launched at GES 2017</h3>
-              <p className={styles.milestoneText}>
-                Officially launched by Shweta Shalini, Shilpa Shetty Kundra, and Vishakha Singh
-                at the Global Entrepreneurship Summit 2017—now the second-most active women-focused VC fund in India.
-              </p>
-            </div>
-          </div>
         </div>
       </section>
 
