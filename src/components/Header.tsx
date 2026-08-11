@@ -34,22 +34,66 @@ export default function Header() {
     };
   }, [open]);
 
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setOpen(false);
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [open]);
+
   const mobileMenu = (
-    <div className={`${styles.mobileNav} ${open ? styles.open : ''}`}>
-      {NAV_LINKS.map((link) => (
-        <Link key={link.label} href={link.href} onClick={() => setOpen(false)}>
-          {link.label}
-        </Link>
-      ))}
-      <Link href="#" className={styles.mobileCta} onClick={() => setOpen(false)}>
-        Nominate Now
-      </Link>
-    </div>
+    <>
+      <div
+        className={`${styles.mobileNavOverlay} ${open ? styles.open : ''}`}
+        onClick={() => setOpen(false)}
+        aria-hidden="true"
+      />
+      <div
+        className={`${styles.mobileNav} ${open ? styles.open : ''}`}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Mobile navigation"
+      >
+        <button
+          className={styles.mobileNavClose}
+          onClick={() => setOpen(false)}
+          aria-label="Close menu"
+        >
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M2 2L14 14M14 2L2 14" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+          </svg>
+        </button>
+
+        <div className={styles.mobileNavInner}>
+          {NAV_LINKS.map((link, i) => (
+            <Link
+              key={link.label}
+              href={link.href}
+              onClick={() => setOpen(false)}
+              className={styles.mobileNavLink}
+              style={{ transitionDelay: open ? `${80 + i * 45}ms` : '0ms' }}
+            >
+              {link.label}
+            </Link>
+          ))}
+          <Link
+            href="#"
+            className={styles.mobileCta}
+            onClick={() => setOpen(false)}
+            style={{ transitionDelay: open ? `${80 + NAV_LINKS.length * 45}ms` : '0ms' }}
+          >
+            Nominate Now
+          </Link>
+        </div>
+      </div>
+    </>
   );
 
   return (
     <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`}>
-      <div className={`container ${styles.wrap}`}>
+      <div className={styles.wrap}>
         <div className={styles.pill}>
           <Link href="/" className={styles.logo} onClick={() => setOpen(false)}>
             <Image

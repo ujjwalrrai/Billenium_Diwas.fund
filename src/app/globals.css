@@ -37,6 +37,8 @@ html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -45,6 +47,8 @@ body {
   line-height: 1.6;
   color: var(--ink);
   background: var(--cream);
+  overflow-x: hidden;
+  max-width: 100%;
   overflow-x: hidden;
 }
 

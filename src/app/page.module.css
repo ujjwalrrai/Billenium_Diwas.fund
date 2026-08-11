@@ -72,6 +72,18 @@
   background: linear-gradient(135deg, #1a0d1f 0%, #2d1b3d 50%, #3a1f47 100%);
   overflow: hidden;
 }
+.hero :global(.container) {
+  width: 100%;
+  min-width: 0;
+}
+
+/* generic safety net: grid children shouldn't refuse to shrink */
+.heroLayout > *,
+.manifestoLayout > *,
+.teamGrid > *,
+.bentoGrid > * {
+  min-width: 0;
+}
 
 .heroBackground {
   position: absolute;
@@ -175,10 +187,11 @@
   border: 1px solid rgba(236, 72, 153, 0.3);
   padding: 8px 18px;
   border-radius: 50px;
-  font-size: 12px;
-  font-weight: 600;
-  font-family: var(--font-condensed);
-  letter-spacing: 0.06em;
+  font-size: 12.5px;
+  font-weight: 500;
+ font-family: var(--font-condensed);
+  font-style: italic;
+  letter-spacing: 0.03em;
   color: #fff;
   backdrop-filter: blur(10px);
   box-shadow: 0 8px 32px rgba(236, 72, 153, 0.1);
@@ -186,13 +199,13 @@
 }
 
 .heroTitle {
-  font-family: var(--font-condensed);
-  font-size: clamp(38px, 4vw, 56px);
+      font-family: var(--font-playfair);
+  font-size: clamp(38px, 4.4vw, 60px);
   font-weight: 600;
-  line-height: 1.15;
+  line-height: 1.18;
   color: #fff;
   margin-bottom: 24px;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.005em;
 }
 
 .badgePulse {
@@ -645,6 +658,7 @@
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.08);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  min-height: 300px;
   cursor: pointer;
 }
 
@@ -1127,9 +1141,15 @@
     padding-top: 0;
   }
 
-  .teamCards,
+.teamCards {
+    grid-template-columns: 1fr;
+  }
+
   .bentoGrid {
     grid-template-columns: 1fr;
+    grid-template-rows: none;
+    grid-auto-rows: auto;
+    gap: 16px;
   }
 
   .heroActions,
