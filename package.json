@@ -23,6 +23,7 @@
     "sanity": "^6.9.1"
   },
   "devDependencies": {
+    "@types/aos": "^3.0.8",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",

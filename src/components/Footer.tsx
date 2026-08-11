@@ -19,9 +19,9 @@ export default function Footer() {
             <div className={styles.colTitle}>Explore</div>
             <ul className={styles.links}>
               <li><Link href="/">Home</Link></li>
-              <li><Link href="/about">About</Link></li>
-              <li><Link href="/women-power">Women Power</Link></li>
-              <li><Link href="/contact">Contact</Link></li>
+              <li><Link href="/">About</Link></li>
+              <li><Link href="/">Women Power</Link></li>
+              <li><Link href="/">Contact</Link></li>
             </ul>
           </div>
 

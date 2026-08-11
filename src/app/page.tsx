@@ -89,7 +89,7 @@ export default function Home() {
 
               <div className={styles.heroActions} data-aos="fade-up" data-aos-delay="300">
                 <Link
-                  href="/contact"
+                  href="/"
                   className={styles.btnPrimary}
                   onMouseMove={handleMouseMove}
                 >
@@ -99,7 +99,7 @@ export default function Home() {
                   </svg>
                 </Link>
                 <Link
-                  href="/about"
+                  href="/"
                   className={styles.btnGlass}
                   onMouseMove={handleMouseMove}
                 >
@@ -111,7 +111,7 @@ export default function Home() {
             <div className={styles.heroVisual} data-aos="fade-left" data-aos-delay="200">
               <div className={styles.heroImageWrapper}>
                 <Image
-                  src="/images/BD_group.png"
+                  src="/images/BD_group1.png"
                   alt="Billennium Divas Fund Event - Women Entrepreneurs"
                   fill
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 200vw, 45vw"

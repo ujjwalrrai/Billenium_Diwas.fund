@@ -9,7 +9,10 @@ export async function GET() {
   const user = await getCurrentUser()
 
   if (!user) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+    return NextResponse.json(
+      { error: 'Unauthorized' },
+      { status: 401 }
+    )
   }
 
   const supabase = await createClient()
@@ -37,10 +40,15 @@ export async function PATCH(request: Request) {
   const user = await getCurrentUser()
 
   if (!user) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+    return NextResponse.json(
+      { error: 'Unauthorized' },
+      { status: 401 }
+    )
   }
 
   const supabase = await createClient()
+
+  // Parse request body
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const body: any = await request.json()
 
@@ -52,14 +60,17 @@ export async function PATCH(request: Request) {
 
   const { data: profile, error } = await supabase
     .from('profiles')
-    .update(body)
+    .update(body as never)
     .eq('id', user.id)
     .select()
     .single()
 
   if (error) {
     return NextResponse.json(
-      { error: 'Failed to update profile', details: error.message },
+      {
+        error: 'Failed to update profile',
+        details: error.message,
+      },
       { status: 500 }
     )
   }

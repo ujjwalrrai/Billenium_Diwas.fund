@@ -8,10 +8,10 @@ import styles from './Header.module.css';
 
 const NAV_LINKS = [
   { href: '/', label: 'Home' },
-  { href: '/about', label: 'About' },
-  { href: '/women-power', label: 'Women Power' },
-  { href: 'https://billenniumdivas.mmbx.in', label: 'Member Login' },
-  { href: '/contact', label: 'Contact' },
+  { href: '/', label: 'About' },
+  { href: '/', label: 'Women Power' },
+  { href: '/', label: 'Member Login' },
+  { href: '/', label: 'Contact' },
 ];
 
 export default function Header() {
