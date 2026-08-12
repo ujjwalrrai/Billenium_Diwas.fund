@@ -29,10 +29,35 @@
   border-bottom: 1px solid var(--line-light);
 }
 
+.brandRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.logoBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  background: var(--cream);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+.logoImg {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+}
+
 .brand {
   font-family: var(--font-display);
   font-size: 26px;
-  margin-bottom: 14px;
 }
 
 .tag {
@@ -104,17 +129,46 @@
 
 @media (max-width: 560px) {
   .footer {
-    padding: 48px 0 20px;
+    padding: 44px 0 20px;
   }
 
+  /* Explore + Reach Us sit side by side; brand and offices stay full width.
+     Cuts the footer from 4 stacked full-width blocks down to 3 rows. */
   .grid {
-    grid-template-columns: 1fr;
-    gap: 32px;
-    padding-bottom: 32px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      'brand brand'
+      'explore reach'
+      'offices offices';
+    gap: 28px 20px;
+    padding-bottom: 28px;
   }
 
-  .watermark {
-    display: none;
+  .brandCol {
+    grid-area: brand;
+  }
+
+  .exploreCol {
+    grid-area: explore;
+  }
+
+  .reachCol {
+    grid-area: reach;
+  }
+
+  .officesCol {
+    grid-area: offices;
+  }
+
+  .logoBadge {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+  }
+
+  .logoImg {
+    width: 24px;
+    height: 24px;
   }
 
   .brand {
@@ -125,9 +179,37 @@
     max-width: 100%;
   }
 
+  .colTitle {
+    margin-bottom: 14px;
+  }
+
+  .links {
+    gap: 10px;
+  }
+
+  .links a {
+    font-size: 14px;
+  }
+
+  .contactLine {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+
+  /* Watermark re-enabled at mobile scale — footer's overflow: hidden
+     clips it cleanly, so it just peeks in the corner instead of
+     covering the whole width like it would at the desktop size. */
+  .watermark {
+    display: block;
+    font-size: 150px;
+    right: -16px;
+    bottom: -38px;
+  }
+
   .bottom {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    text-align: center;
     gap: 6px;
     padding-top: 20px;
   }

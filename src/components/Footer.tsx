@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import styles from './Footer.module.css';
 
@@ -7,25 +8,36 @@ export default function Footer() {
       <span className={styles.watermark} aria-hidden="true">B</span>
       <div className="container">
         <div className={styles.grid}>
-          <div>
-            <div className={styles.brand}>Billennium Divas</div>
+          <div className={styles.brandCol}>
+            <div className={styles.brandRow}>
+              <span className={styles.logoBadge}>
+                <Image
+                  src="/images/logo.png"
+                  alt="Billennium Divas"
+                  width={40}
+                  height={40}
+                  className={styles.logoImg}
+                />
+              </span>
+              <div className={styles.brand}>Billennium Divas</div>
+            </div>
             <p className={styles.tag}>
               Womenpreneurship. Power, Unleashed. An early-stage micro-equity fund
               investing in exceptionally talented women entrepreneurs across India.
             </p>
           </div>
 
-          <div>
+          <div className={`${styles.linkCol} ${styles.exploreCol}`}>
             <div className={styles.colTitle}>Explore</div>
             <ul className={styles.links}>
               <li><Link href="/">Home</Link></li>
               <li><Link href="/">About</Link></li>
               <li><Link href="/">Women Power</Link></li>
-              <li><Link href="/">Contact</Link></li>
+              <li><Link href="/contact">Contact</Link></li>
             </ul>
           </div>
 
-          <div>
+          <div className={`${styles.linkCol} ${styles.reachCol}`}>
             <div className={styles.colTitle}>Reach Us</div>
             <ul className={styles.links}>
               <li><a href="mailto:info@billenniumdivas.fund">info@billenniumdivas.fund</a></li>
@@ -34,7 +46,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div>
+          <div className={styles.officesCol}>
             <div className={styles.colTitle}>Offices</div>
             <p className={styles.contactLine}>
               Navi Mumbai — Sector 29, Parsik Hill Rd, CBD Belapur, Maharashtra 400614
