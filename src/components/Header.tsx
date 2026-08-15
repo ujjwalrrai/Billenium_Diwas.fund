@@ -8,10 +8,10 @@ import styles from './Header.module.css';
 
 const NAV_LINKS = [
   { href: '/', label: 'Home' },
-  { href: '/', label: 'About' },
-  { href: '/', label: 'Women Power' },
-  { href: '/', label: 'Member Login' },
-  { href: '/', label: 'Contact' },
+  { href: '/about', label: 'About' },
+  { href: '/women-power', label: 'Women Power' },
+  { href: 'https://billenniumdivas.mmbx.in', label: 'Member Login' },
+  { href: '/contact', label: 'Contact' },
 ];
 
 export default function Header() {
@@ -79,7 +79,7 @@ export default function Header() {
             </Link>
           ))}
           <Link
-            href="#"
+            href="https://event.billenniumdivas.fund/"
             className={styles.mobileCta}
             onClick={() => setOpen(false)}
             style={{ transitionDelay: open ? `${80 + NAV_LINKS.length * 45}ms` : '0ms' }}
@@ -116,7 +116,7 @@ export default function Header() {
             </ul>
           </nav>
 
-          <Link href="#" className={styles.cta}>
+          <Link href="https://event.billenniumdivas.fund/" className={styles.cta}>
             <span>Nominate Now</span>
           </Link>
 

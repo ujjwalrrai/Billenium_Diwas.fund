@@ -33,54 +33,59 @@ export default function WomenPowerPage() {
         lead="Launched in 2016, Women Power has become a signature knowledge-sharing platform in India's women startup and entrepreneurial ecosystem."
       />
 
+      {/* Intro */}
       <section className={styles.section}>
         <div className={`container ${styles.introGrid}`}>
           <div>
             <span className={styles.sectionEyebrow}>The Women Power</span>
-            <h2 className={styles.introTitle}>Five editions. One growing movement.</h2>
+            <h2 className={styles.introTitle}>
+              Five editions.{' '}
+              <span className={styles.gradientText}>One growing movement.</span>
+            </h2>
             <div className={styles.introBody}>
               <p>
-                &lsquo;Women Power&rsquo; is an inspiring knowledge-sharing
-                platform created for women who have defied the odds and
-                emerged into the world of entrepreneurship. It&rsquo;s the
-                brainchild of Bhavesh Kothari — a startup mentor, business
-                advisor and entrepreneur who has been a driving force in
-                India&rsquo;s startup industry for over a decade.
+                &lsquo;Women Power&rsquo; is an inspiring knowledge-sharing platform created for women who
+                have defied the odds and emerged into the world of entrepreneurship. It&rsquo;s the
+                brainchild of Bhavesh Kothari — a startup mentor, business advisor and entrepreneur
+                who has been a driving force in India&rsquo;s startup industry for over a decade.
               </p>
               <p>
-                It has evolved to become the most sought-after platform for
-                women entrepreneurs to get educated, express ideas and
-                explore growth opportunities in collaboration with marquee
-                institutions.
+                From its launch in 2016, Women Power has become a signature event in the women
+                startup and entrepreneurial ecosystem. It has evolved to become the most sought-after
+                platform for women entrepreneurs to get educated, express ideas and explore growth
+                opportunities in collaboration with marquee institutions.
               </p>
             </div>
           </div>
           <div className={styles.mediaCard}>
+            <div className={styles.mediaCardGlow}></div>
             <span className={styles.mediaCardLabel}>Power, Unleashed on stage.</span>
           </div>
         </div>
       </section>
 
-      <section className={`${styles.section} ${styles.alt}`}>
+      {/* Featured Speakers & Partners */}
+      <section className={styles.sectionDark}>
         <div className="container">
-          <span className={styles.sectionEyebrow}>Featured Speakers</span>
+          <span className={styles.sectionEyebrowLight}>Featured Speakers</span>
           <div className={styles.speakerRow}>
             {SPEAKERS.map((s) => (
-              <span className={styles.speakerPill} key={s}>{s}</span>
+              <span className={styles.speakerPillDark} key={s}>{s}</span>
             ))}
           </div>
 
-          <div style={{ marginTop: 48 }}>
-            <span className={styles.sectionEyebrow}>In Collaboration With</span>
+          <div style={{ marginTop: 52 }}>
+            <span className={styles.sectionEyebrowLight}>In Collaboration With</span>
             <div className={styles.partnerRow}>
               {PARTNERS.map((p) => (
-                <span className={styles.partnerPill} key={p}>{p}</span>
+                <span className={styles.partnerPillDark} key={p}>{p}</span>
               ))}
             </div>
           </div>
         </div>
       </section>
 
+      {/* Gallery */}
       <section className={styles.section}>
         <div className="container">
           <span className={styles.sectionEyebrow}>The Gallery</span>
@@ -92,25 +97,36 @@ export default function WomenPowerPage() {
         </div>
       </section>
 
-      <section className={`${styles.section} ${styles.alt}`}>
+      {/* Editions */}
+      <section className={styles.sectionDark}>
         <div className="container">
-          <span className={styles.sectionEyebrow}>Editions So Far</span>
-          <div className={styles.editionRow} style={{ color: 'var(--plum)' }}>
+          <span className={styles.sectionEyebrowLight}>Editions So Far</span>
+          <div className={styles.editionRow}>
             {EDITIONS.map((e, i) => (
               <div className={styles.editionCol} key={i}>
-                <span className={styles.editionYear} style={{ color: 'var(--berry)' }}>{e.year}</span>
-                <span className={styles.editionCity} style={{ color: 'rgba(26,20,32,0.55)' }}>{e.city}</span>
+                <span className={styles.editionYear}>{e.year}</span>
+                <span className={styles.editionCity}>{e.city}</span>
               </div>
             ))}
           </div>
         </div>
       </section>
 
+      {/* CTA */}
       <section className={styles.section}>
         <div className="container">
           <div className={styles.ctaBand}>
-            <h2>Like what you see?</h2>
-            <a href="/contact" className={styles.btnPrimary}>Get in Touch</a>
+            <div className={styles.ctaBandGlow}></div>
+            <h2>
+              Like what you see?{' '}
+              <span className={styles.goldText}>Get in touch.</span>
+            </h2>
+            <a href="/contact" className={styles.btnPrimary}>
+              <span>Contact Us</span>
+              <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </a>
           </div>
         </div>
       </section>

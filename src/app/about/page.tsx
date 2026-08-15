@@ -7,13 +7,16 @@ import styles from './about.module.css';
 
 export const metadata: Metadata = { title: 'About – Billennium Divas' };
 
-const PARTNERS = ['SSIP Gujarat', 'AP Innovation Society', 'AICRAISE', 'EDI India', 'Craywingz', 'CMF Asia', 'CIMSME'];
+const PARTNERS = [
+  'SSIP Gujarat', 'AP Innovation Society', 'AICRAISE',
+  'EDI India', 'Craywingz', 'CMF Asia', 'CIMSME',
+];
 
 const TEAM = [
-  { name: 'Minal Kothari', role: 'Co-Founder & Director' },
-  { name: 'Bhavesh Kothari', role: 'Co-Founder & Director' },
-  { name: 'Pratik Lalani', role: 'Entrepreneur In Residence' },
-  { name: 'Purvang Joshi', role: 'Entrepreneur In Residence' },
+  { name: 'Minal Kothari', role: 'Co-Founder & Director', emoji: 'MK' },
+  { name: 'Bhavesh Kothari', role: 'Co-Founder & Director', emoji: 'BK' },
+  { name: 'Pratik Lalani', role: 'Entrepreneur In Residence', emoji: 'PL' },
+  { name: 'Purvang Joshi', role: 'Entrepreneur In Residence', emoji: 'PJ' },
 ];
 
 const ADVISORS = [
@@ -25,6 +28,13 @@ const ADVISORS = [
   { name: 'Shubhangi Mitra', role: 'Principal Evangelist – UK & Europe, Managing Partner – Solacexis' },
   { name: 'Aparna Mishra', role: 'Principal Evangelist, Founder – Women Shine' },
   { name: 'Ms. Shoma Mittra', role: 'Principal Evangelist – Australia, Director – WriteClickWriting' },
+];
+
+const WHERE_WE_INVEST = [
+  { icon: '🛒', label: 'B2B & B2C Marketplace' },
+  { icon: '💻', label: 'E-Commerce & Tech' },
+  { icon: '🌐', label: 'Web-Enabled Services' },
+  { icon: '🤝', label: 'Platform & Communities' },
 ];
 
 function initials(name: string) {
@@ -42,49 +52,147 @@ export default function AboutPage() {
         lead="An early-stage micro-equity fund, sector agnostic, built for and by women."
       />
 
+      {/* ─── THE FUND ─── */}
       <section className={styles.section}>
-        <div className={`container ${styles.fundGrid}`}>
-          <div>
-            <span className={styles.sectionEyebrow}>The Fund</span>
-            <h2 className={styles.fundTitle}>Capital follows conviction — ours follows women.</h2>
-            <div className={styles.fundBody}>
-              <p>
-                Women-led enterprises experience more success and fewer
-                failures compared to their male counterparts. Yet venture
-                investment doesn&rsquo;t reflect this. Business Insider France
-                reported that enterprises founded or co-founded by women
-                receive roughly $935,000 in investment on average, against
-                about $2.1 million for those founded by men — even as
-                women-founded startups generate more per dollar raised.
+        <div className="container">
+          <div className={styles.fundGrid}>
+            <div className={styles.fundLeft}>
+              <span className={styles.eyebrow}>The Fund</span>
+              <h2 className={styles.fundTitle}>
+                Capital follows conviction —{' '}
+                <span className={styles.gradientPink}>ours follows women.</span>
+              </h2>
+              <p className={styles.fundLead}>
+                Women-led enterprises experience more success and fewer failures compared to their
+                male counterparts. Yet venture investment doesn&apos;t reflect this.
               </p>
-              <p>
-                Billennium Divas Fund was formed to change that. It&rsquo;s an
-                early-stage micro-equity fund investing in the exponential
-                power of exceptionally talented women entrepreneurs — sector
-                agnostic, for and by women.
+              <p className={styles.fundBody}>
+                Business Insider France reported that enterprises founded or co-founded by women
+                receive roughly $935,000 in investment on average, against about $2.1 million for
+                those founded by men — even as women-founded startups generate more per dollar raised.
               </p>
-            </div>
-          </div>
+              <p className={styles.fundBody}>
+                Billennium Divas Fund was formed to change that. It&apos;s an early-stage micro-equity
+                fund investing in the exponential power of exceptionally talented women
+                entrepreneurs — sector agnostic, for and by women.
+              </p>
 
-          <div className={styles.statCard}>
-            <div className={styles.statBig}>78¢</div>
-            <p>generated per dollar raised by women-founded startups, versus 31¢ for their male counterparts.</p>
-            <div className={styles.statDivider} />
-            <div className={styles.figRow}>
-              <span>Avg. funding — women founders</span>
-              <span>$935K</span>
+              <a href="mailto:pitch@billenniumdivas.fund" className={styles.btnOutline}>
+                Submit a Pitch Deck
+                <svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                  <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </a>
             </div>
-            <div className={styles.figRow}>
-              <span>Avg. funding — male founders</span>
-              <span>$2.1M</span>
+
+            <div className={styles.fundRight}>
+              {/* Big stat card */}
+              <div className={styles.statCard}>
+                <div className={styles.statCardOrb}></div>
+                <div className={styles.statCardOrb2}></div>
+                <div className={styles.statTop}>
+                  <span className={styles.statBig}>78¢</span>
+                  <span className={styles.statLabel}>per $1 raised</span>
+                </div>
+                <p className={styles.statDesc}>
+                  Generated by women-founded startups — vs. just 31¢ for male counterparts.
+                </p>
+                <div className={styles.statDivider}></div>
+                <div className={styles.figRow}>
+                  <span>Women founders avg. funding</span>
+                  <span className={styles.figVal}>$935K</span>
+                </div>
+                <div className={styles.figRow}>
+                  <span>Male founders avg. funding</span>
+                  <span className={styles.figVal}>$2.1M</span>
+                </div>
+              </div>
+
+              {/* The Beginning card */}
+              <div className={styles.beginningCard}>
+                <div className={styles.beginningIcon}>🚀</div>
+                <div>
+                  <div className={styles.beginningTitle}>The Beginning</div>
+                  <p className={styles.beginningText}>
+                    Founded by Minal Kothari, Bhavesh Kothari and Tapaswi Patel. Launched by
+                    Shweta Shalini, Shilpa Shetty Kundra and Vishakha Singh on 17 Nov 2017 at
+                    Global Entrepreneurship Summit (GES) 2017.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section className={`${styles.section} ${styles.alt}`}>
+      {/* ─── THE RATIONALE / MANIFESTO BAND ─── */}
+      <section className={styles.rationaleSection}>
+        <div className={styles.rationaleOrb1}></div>
+        <div className={styles.rationaleOrb2}></div>
         <div className="container">
-          <span className={styles.sectionEyebrow}>Partners</span>
+          <div className={styles.rationaleInner}>
+            <span className={styles.eyebrowLight}>The Rationale</span>
+            <h2 className={styles.rationaleTitle}>
+              A Billion Millenniums.<br />
+              <span className={styles.gradientGold}>One Unstoppable Mission.</span>
+            </h2>
+            <p className={styles.rationaleText}>
+              Billennium Divas is a mission for the women entrepreneurs who define and reign the
+              future with their steadfast drive to change the status quo. It&apos;s not just a venture
+              fund — it&apos;s a sum total of everything that cohesively enables and empowers the
+              entrepreneurial ecosystem for enterprising women. An umbrella of works, activities
+              and support systems to grow and sustain for years to come.
+            </p>
+            <div className={styles.rationaleStats}>
+              <div className={styles.rationaleStat}>
+                <span className={styles.rationaleStatNum}>2017</span>
+                <span className={styles.rationaleStatLabel}>Founded at GES</span>
+              </div>
+              <div className={styles.rationaleStatDivider}></div>
+              <div className={styles.rationaleStat}>
+                <span className={styles.rationaleStatNum}>2nd</span>
+                <span className={styles.rationaleStatLabel}>Women-only VC in India</span>
+              </div>
+              <div className={styles.rationaleStatDivider}></div>
+              <div className={styles.rationaleStat}>
+                <span className={styles.rationaleStatNum}>₹25L–₹5Cr</span>
+                <span className={styles.rationaleStatLabel}>Ticket Size</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── WHERE WE INVEST ─── */}
+      <section className={styles.section}>
+        <div className="container">
+          <div className={styles.sectionHeader}>
+            <span className={styles.eyebrow}>Where We Invest</span>
+            <h2 className={styles.sectionTitle}>
+              Focused on sectors where{' '}
+              <span className={styles.gradientPink}>women-led startups</span> have incredible impact
+            </h2>
+          </div>
+          <div className={styles.investGrid}>
+            {WHERE_WE_INVEST.map((item) => (
+              <div className={styles.investCard} key={item.label}>
+                <div className={styles.investIcon}>{item.icon}</div>
+                <div className={styles.investLabel}>{item.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── PARTNERS ─── */}
+      <section className={styles.sectionAlt}>
+        <div className="container">
+          <div className={styles.sectionHeader}>
+            <span className={styles.eyebrow}>Partners</span>
+            <h2 className={styles.sectionTitle}>
+              Backed by <span className={styles.gradientPink}>trusted institutions</span>
+            </h2>
+          </div>
           <div className={styles.logoRow}>
             {PARTNERS.map((p) => (
               <span className={styles.logoPill} key={p}>{p}</span>
@@ -93,67 +201,99 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* ─── THE FUTURE ─── */}
       <section className={styles.section}>
-        <div className={`container ${styles.fundGrid}`}>
-          <div>
-            <span className={styles.sectionEyebrow}>The Future</span>
-            <h2 className={styles.fundTitle}>114% more women entrepreneurs than 20 years ago.</h2>
-            <div className={styles.fundBody}>
-              <p>
-                Yet Indian statistics tell a fuller story. Per the Sixth
-                Economic Census, women constitute around 14% of total
-                entrepreneurship — 8.05 million of 58.5 million entrepreneurs.
-                2.76 million work in agriculture; 5.29 million in
-                non-agriculture. Average employment in women-owned
-                enterprises remains a modest 1.67.
+        <div className="container">
+          <div className={styles.fundGrid}>
+            <div className={styles.statCardAlt}>
+              <div className={styles.statCardOrb}></div>
+              <div className={styles.statTop}>
+                <span className={styles.statBig}>14%</span>
+                <span className={styles.statLabel}>of India&apos;s entrepreneurs</span>
+              </div>
+              <p className={styles.statDesc}>
+                Only 8.05 million of India&apos;s 58.5 million entrepreneurs are women — per the
+                Sixth Economic Census.
               </p>
-              <p>
-                For Billennium Divas, the mission is to change these numbers
-                as much as we possibly can. There are miles to go before we
-                sleep.
+              <div className={styles.statDivider}></div>
+              <div className={styles.figRow}>
+                <span>Agriculture sector</span>
+                <span className={styles.figVal}>2.76M</span>
+              </div>
+              <div className={styles.figRow}>
+                <span>Non-agriculture sector</span>
+                <span className={styles.figVal}>5.29M</span>
+              </div>
+              <div className={styles.figRow}>
+                <span>Growth vs. 20 years ago</span>
+                <span className={styles.figVal}>+114%</span>
+              </div>
+            </div>
+
+            <div className={styles.fundLeft}>
+              <span className={styles.eyebrow}>The Future</span>
+              <h2 className={styles.fundTitle}>
+                <span className={styles.gradientPink}>114%</span> more women entrepreneurs
+                than 20 years ago.
+              </h2>
+              <p className={styles.fundLead}>
+                Yet India&apos;s statistics tell a far more complex story. Progress is real —
+                but the gap is enormous.
               </p>
-            </div>
-          </div>
-          <div className={styles.statCard}>
-            <div className={styles.statBig}>14%</div>
-            <p>of India&rsquo;s entrepreneurs are women — 8.05M out of 58.5M, per the Sixth Economic Census.</p>
-            <div className={styles.statDivider} />
-            <div className={styles.figRow}>
-              <span>Agriculture sector</span>
-              <span>2.76M</span>
-            </div>
-            <div className={styles.figRow}>
-              <span>Non-agriculture sector</span>
-              <span>5.29M</span>
+              <p className={styles.fundBody}>
+                Per the Sixth Economic Census, women constitute around 14% of total
+                entrepreneurship — 8.05 million of 58.5 million entrepreneurs. 2.76 million
+                work in agriculture; 5.29 million in non-agriculture. Average employment in
+                women-owned enterprises remains a modest 1.67.
+              </p>
+              <p className={styles.fundBody}>
+                For Billennium Divas, the mission is to change these numbers as much as we
+                possibly can. There are miles to go before we sleep.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      <section className={`${styles.section} ${styles.alt}`}>
+      {/* ─── THE TEAM ─── */}
+      <section className={styles.sectionAlt}>
         <div className="container">
-          <span className={styles.sectionEyebrow}>The Team</span>
-          <div className={styles.peopleGrid}>
+          <div className={styles.sectionHeader}>
+            <span className={styles.eyebrow}>The Team</span>
+            <h2 className={styles.sectionTitle}>
+              Built by <span className={styles.gradientPink}>entrepreneurs</span>, for entrepreneurs
+            </h2>
+          </div>
+          <div className={styles.teamGrid}>
             {TEAM.map((p) => (
-              <div className={styles.personCard} key={p.name}>
-                <div className={styles.personAvatar}>{initials(p.name)}</div>
-                <div className={styles.personName}>{p.name}</div>
-                <div className={styles.personRole}>{p.role}</div>
+              <div className={styles.teamCard} key={p.name}>
+                <div className={styles.teamCardGlow}></div>
+                <div className={styles.teamAvatar}>{initials(p.name)}</div>
+                <div className={styles.teamName}>{p.name}</div>
+                <div className={styles.teamRole}>{p.role}</div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className={styles.section}>
+      {/* ─── ADVISORS ─── */}
+      <section className={styles.advisorSection}>
+        <div className={styles.advisorOrb1}></div>
+        <div className={styles.advisorOrb2}></div>
         <div className="container">
-          <span className={styles.sectionEyebrow}>Advisors</span>
-          <div className={styles.peopleGrid}>
+          <div className={styles.sectionHeader}>
+            <span className={styles.eyebrowLight}>Advisors</span>
+            <h2 className={styles.sectionTitleLight}>
+              Guided by <span className={styles.gradientGold}>luminaries</span>
+            </h2>
+          </div>
+          <div className={styles.advisorGrid}>
             {ADVISORS.map((p) => (
-              <div className={styles.personCard} key={p.name}>
-                <div className={styles.personAvatar}>{initials(p.name)}</div>
-                <div className={styles.personName}>{p.name}</div>
-                <div className={styles.personRole}>{p.role}</div>
+              <div className={styles.advisorCard} key={p.name}>
+                <div className={styles.advisorAvatar}>{initials(p.name)}</div>
+                <div className={styles.advisorName}>{p.name}</div>
+                <div className={styles.advisorRole}>{p.role}</div>
               </div>
             ))}
           </div>
@@ -163,32 +303,74 @@ export default function AboutPage() {
       <Stats />
       <Testimonials />
 
+      {/* ─── INITIATIVES & EVENTS ─── */}
       <section className={styles.section}>
         <div className="container">
-          <span className={styles.sectionEyebrow}>The Initiatives &amp; Events</span>
-          <div className={styles.twoCol}>
-            <div className={styles.initCard}>
-              <h3>WEFORME</h3>
-              <p>
-                An initiative for equipping ex-corporate urban married women
-                with the skills, confidence and support they need to incept
-                and install a business of their own — turning ideas into
-                possibilities of a successful future.
+          <div className={styles.sectionHeader}>
+            <span className={styles.eyebrow}>The Initiatives &amp; Events</span>
+            <h2 className={styles.sectionTitle}>
+              Programs that <span className={styles.gradientPink}>move the needle</span>
+            </h2>
+          </div>
+
+          <div className={styles.initiativeGrid}>
+            <div className={styles.initiativeCard}>
+              <div className={styles.initiativeBadge}>Initiative</div>
+              <h3 className={styles.initiativeTitle}>WEFORME</h3>
+              <p className={styles.initiativeDesc}>
+                An initiative for equipping ex-corporate urban married women with the skills,
+                confidence and support they need to incept and install a business of their own —
+                turning ideas into possibilities of a successful future.
               </p>
             </div>
-            <div className={styles.initCard}>
-              <h3>Project HOPE</h3>
-              <p>
-                An initiative for rural women, inspiring them to engage and
-                endeavor in entrepreneurship, backed by a seed fund from
-                Billennium Divas.
+            <div className={styles.initiativeCard}>
+              <div className={styles.initiativeBadge}>Initiative</div>
+              <h3 className={styles.initiativeTitle}>Project HOPE</h3>
+              <p className={styles.initiativeDesc}>
+                An initiative for rural women, inspiring them to engage and endeavor in
+                entrepreneurship, backed by a seed fund from Billennium Divas.
               </p>
             </div>
           </div>
-          <div className={styles.eventPills}>
-            <span className={styles.eventPill}>Women Power</span>
-            <span className={styles.eventPill}>Women Startup Investors Summit (W-S.I.S)</span>
-            <span className={styles.eventPill}>Diva Entrepreneurs Bootcamp (DEBOOT)</span>
+
+          <div className={styles.eventsBand}>
+            <div className={styles.eventsBandLeft}>
+              <span className={styles.eyebrow}>Signature Events</span>
+              <p className={styles.eventsSubtext}>
+                Conceptualized and conducted year-on-year by Team Billennium Divas
+              </p>
+            </div>
+            <div className={styles.eventPills}>
+              <span className={styles.eventPill}>Women Power</span>
+              <span className={styles.eventPill}>W-S.I.S</span>
+              <span className={styles.eventPill}>DEBOOT</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── CTA ─── */}
+      <section className={styles.ctaSection}>
+        <div className={styles.ctaOrb1}></div>
+        <div className={styles.ctaOrb2}></div>
+        <div className="container">
+          <div className={styles.ctaInner}>
+            <span className={styles.eyebrowLight}>Ready to grow?</span>
+            <h2 className={styles.ctaTitle}>
+              Apply for funding or nominate a{' '}
+              <span className={styles.gradientGold}>deserving founder</span>
+            </h2>
+            <div className={styles.ctaActions}>
+              <a href="mailto:pitch@billenniumdivas.fund" className={styles.btnPrimary}>
+                Submit Pitch Deck
+                <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                  <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </a>
+              <a href="https://event.billenniumdivas.fund/" className={styles.btnGlass}>
+                Nominate Now
+              </a>
+            </div>
           </div>
         </div>
       </section>
