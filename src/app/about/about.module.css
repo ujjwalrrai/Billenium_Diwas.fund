@@ -1,5 +1,5 @@
 /* ===========================
-   ABOUT PAGE — REDESIGNED TO MATCH HOMEPAGE
+   ABOUT PAGE — REDESIGNED
    =========================== */
 
 @keyframes floatOrb {
@@ -7,33 +7,23 @@
   50% { transform: translate(30px, -30px) scale(1.1); }
 }
 
-@keyframes shimmerIn {
-  from { opacity: 0; transform: translateY(24px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes magicPulse {
-  0%, 100% {
-    opacity: 0.6;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.05);
-  }
-}
-
 /* ---- Sections ---- */
 .section {
-  padding: 110px 0;
+  padding: 72px 0;
   position: relative;
   background: #faf8f5;
 }
 
 .sectionAlt {
-  padding: 110px 0;
+  padding: 72px 0;
   background: linear-gradient(180deg, #faf8f5 0%, #f5f0ea 100%);
   position: relative;
+}
+
+/* First section on the page sits right under a sticky header —
+   give it extra top clearance so eyebrow/title aren't hidden behind the nav */
+.firstSection {
+  padding-top: 160px;
 }
 
 /* ---- Common eyebrows ---- */
@@ -57,7 +47,7 @@
   margin-bottom: 24px;
 }
 
-/* ---- Gradient helpers ---- */
+/* ---- Gradient text helpers ---- */
 .gradientPink {
   background: linear-gradient(135deg, #ec4899 0%, #a855f7 100%);
   -webkit-background-clip: text;
@@ -76,13 +66,13 @@
 
 /* ---- Section headers ---- */
 .sectionHeader {
-  margin-bottom: 80px;
-  max-width: 800px;
+  margin-bottom: 44px;
+  max-width: 760px;
 }
 
 .sectionTitle {
   font-family: var(--font-playfair);
-  font-size: clamp(34px, 4.2vw, 52px);
+  font-size: clamp(32px, 4vw, 48px);
   font-weight: 800;
   line-height: 1.25;
   color: #1a0d1f;
@@ -90,55 +80,17 @@
 
 .sectionTitleLight {
   font-family: var(--font-playfair);
-  font-size: clamp(34px, 4.2vw, 52px);
+  font-size: clamp(32px, 4vw, 48px);
   font-weight: 800;
   line-height: 1.25;
   color: #fff;
 }
 
-/* ===========================
-   FUND SECTION
-   =========================== */
-.fundGrid {
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 80px;
-  align-items: center;
-}
-
-.fundLeft {
-  /* text side */
-}
-
-.fundTitle {
-  font-family: var(--font-playfair);
-  font-size: clamp(32px, 3.8vw, 48px);
-  font-weight: 700;
-  color: #1a0d1f;
-  margin-bottom: 24px;
-  line-height: 1.22;
-}
-
-.fundLead {
-  font-size: 18px;
-  color: #1a0d1f;
-  font-weight: 600;
-  margin-bottom: 20px;
-  line-height: 1.65;
-}
-
-.fundBody {
-  font-size: 16px;
-  color: rgba(26, 13, 31, 0.7);
-  margin-bottom: 20px;
-  line-height: 1.75;
-}
-
-.btnOutline {
+/* ---- Shared buttons ---- */
+.btnPrimary {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  margin-top: 32px;
   background: linear-gradient(135deg, #ec4899 0%, #a855f7 100%);
   color: #fff;
   font-weight: 700;
@@ -147,12 +99,12 @@
   border-radius: 12px;
   border: none;
   box-shadow: 0 8px 24px rgba(236, 72, 153, 0.3);
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   position: relative;
   overflow: hidden;
 }
 
-.btnOutline::before {
+.btnPrimary::before {
   content: '';
   position: absolute;
   top: 0;
@@ -163,573 +115,523 @@
   transition: left 0.5s ease;
 }
 
-.btnOutline:hover::before {
+.btnPrimary:hover::before {
   left: 100%;
 }
 
-.btnOutline:hover {
+.btnPrimary:hover {
   transform: translateY(-3px);
-  box-shadow: 0 12px 32px rgba(236, 72, 153, 0.4);
+  box-shadow: 0 14px 36px rgba(236, 72, 153, 0.45);
 }
 
-.fundRight {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
+.btnGlass {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1.5px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 14px 26px;
+  border-radius: 12px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  transition: all 0.3s ease;
 }
 
-/* ---- Stat Card ---- */
-.statCard,
-.statCardAlt {
-  position: relative;
+.btnGlass:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-3px);
+}
+
+/* ===========================
+   THE FUND
+   =========================== */
+.fundGrid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 72px;
+  align-items: center;
+}
+
+.fundTitle {
+  font-family: var(--font-playfair);
+  font-size: clamp(30px, 3.6vw, 44px);
+  font-weight: 700;
+  color: #1a0d1f;
+  margin-bottom: 22px;
+  line-height: 1.22;
+}
+
+.fundLead {
+  font-size: 17.5px;
+  color: #1a0d1f;
+  font-weight: 600;
+  margin-bottom: 16px;
+  line-height: 1.65;
+}
+
+.fundBody {
+  font-size: 16px;
+  color: rgba(26, 13, 31, 0.7);
+  margin-bottom: 16px;
+  line-height: 1.75;
+}
+
+.impactPanel {
+  background: #fff;
+  border: 1px solid rgba(26, 13, 31, 0.08);
   border-radius: 24px;
   padding: 44px 40px;
-  background: linear-gradient(135deg, #1a0d1f 0%, #2d1b3d 50%, #3a1f47 100%);
-  overflow: hidden;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 20px 60px rgba(26, 13, 31, 0.06);
 }
 
-.statCardAlt {
-  /* same dark card but left-side in future section */
-}
-
-.statCardOrb {
-  position: absolute;
-  width: 350px;
-  height: 350px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(168, 85, 247, 0.35) 0%, transparent 70%);
-  top: -100px;
-  right: -80px;
-  filter: blur(60px);
-  pointer-events: none;
-  animation: floatOrb 12s ease-in-out infinite;
-}
-
-.statCardOrb2 {
-  position: absolute;
-  width: 250px;
-  height: 250px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(236, 72, 153, 0.3) 0%, transparent 70%);
-  bottom: -60px;
-  left: -40px;
-  filter: blur(50px);
-  pointer-events: none;
-  animation: floatOrb 16s ease-in-out infinite reverse;
-}
-
-/* thin pink border */
-.statCard::before,
-.statCardAlt::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: 24px;
-  border: 1px solid rgba(236, 72, 153, 0.2);
-  pointer-events: none;
-}
-
-.statTop {
+.impactRow {
   display: flex;
-  align-items: flex-end;
-  gap: 14px;
-  margin-bottom: 16px;
+  align-items: baseline;
+  gap: 20px;
 }
 
-.statBig {
+.impactNum {
   font-family: var(--font-playfair);
-  font-size: 80px;
-  line-height: 1;
-  font-weight: 900;
+  font-size: 40px;
+  font-weight: 800;
+  flex-shrink: 0;
+  min-width: 88px;
   background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  position: relative;
 }
 
-.statLabel {
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.6);
-  margin-bottom: 12px;
-  letter-spacing: 0.02em;
-  font-weight: 500;
+.impactSymbol {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  font-size: 0.5em;
+  font-weight: 700;
+  margin: 0 2px;
+  vertical-align: middle;
 }
 
-.statDesc {
-  font-size: 15px;
-  color: rgba(255, 255, 255, 0.8);
-  line-height: 1.7;
+.impactLabel {
+  font-size: 14.5px;
+  color: rgba(26, 13, 31, 0.7);
+  line-height: 1.6;
+}
+
+.impactLabel strong {
+  color: #1a0d1f;
+}
+
+.impactDivider {
+  height: 1px;
+  background: rgba(26, 13, 31, 0.08);
+  margin: 24px 0;
+}
+
+.impactCompare {
+  display: flex;
+  gap: 16px;
+}
+
+.impactCompareItem {
+  flex: 1;
+  text-align: center;
+  padding: 18px 10px;
+  border-radius: 14px;
+  background: rgba(236, 72, 153, 0.05);
+}
+
+.impactNumSm {
+  font-family: var(--font-playfair);
+  font-size: 24px;
+  font-weight: 800;
+  color: #1a0d1f;
+  margin-bottom: 4px;
+}
+
+.impactCompareLabel {
+  display: block;
+  font-size: 11.5px;
+  color: rgba(26, 13, 31, 0.55);
+  line-height: 1.4;
+}
+
+.impactNote {
+  margin-top: 22px;
+  font-size: 13.5px;
+  font-style: italic;
+  color: rgba(26, 13, 31, 0.5);
+  text-align: center;
+}
+
+/* ===========================
+   MILESTONES / OUR STORY
+   =========================== */
+.storySection {
+  display: grid;
+  grid-template-columns: 1fr 0.85fr;
+  grid-template-areas:
+    "header header"
+    "timeline photo";
+  column-gap: 72px;
+  row-gap: 48px;
+  align-items: start;
+}
+
+.storySection .sectionHeader {
+  grid-area: header;
   margin-bottom: 0;
 }
 
-.statDivider {
-  height: 1px;
-  background: linear-gradient(90deg, rgba(236, 72, 153, 0.4), transparent);
-  margin: 28px 0;
+.storyPhoto {
+  grid-area: photo;
+  position: sticky;
+  top: 110px;
+  align-self: start;
 }
 
-.figRow {
+.storyPhotoImg {
+  width: 100%;
+  aspect-ratio: 8 / 5;
+  min-height: 220px;
+  max-height: 420px;
+  border-radius: 24px;
+  background-color: #e5a8c4;
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 24px 60px rgba(26, 13, 31, 0.14);
+}
+.timeline {
+  grid-area: timeline;
+  max-width: 720px;
+}
+
+.timelineItem {
+  position: relative;
   display: flex;
-  justify-content: space-between;
+  gap: 28px;
+  padding-bottom: 40px;
+}
+
+.timelineItem:last-child {
+  padding-bottom: 0;
+}
+
+.timelineMarker {
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  padding: 10px 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.65);
-}
-
-.figVal {
-  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  font-weight: 800;
-  font-size: 16px;
-}
-
-/* ---- The Beginning mini card ---- */
-.beginningCard {
-  display: flex;
-  gap: 18px;
-  align-items: flex-start;
-  padding: 28px 30px;
-  border-radius: 20px;
-  background: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
-}
-
-.beginningIcon {
-  font-size: 32px;
-  line-height: 1;
   flex-shrink: 0;
-  margin-top: 2px;
 }
 
-.beginningTitle {
+.timelineDot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ec4899, #a855f7);
+  box-shadow: 0 0 0 4px rgba(236, 72, 153, 0.14);
+  margin-top: 6px;
+  flex-shrink: 0;
+}
+
+.timelineLine {
+  flex: 1;
+  width: 1px;
+  background: rgba(26, 13, 31, 0.12);
+  margin-top: 6px;
+}
+
+.timelineItem:last-child .timelineLine {
+  display: none;
+}
+
+.timelineYear {
   font-family: var(--font-playfair);
-  font-size: 18px;
-  font-weight: 800;
+  font-style: italic;
+  font-size: 22px;
   color: #1a0d1f;
-  margin-bottom: 10px;
-  background: linear-gradient(135deg, #ec4899 0%, #a855f7 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  margin-bottom: 8px;
 }
 
-.beginningText {
-  font-size: 14px;
+.timelineText {
+  font-size: 15px;
   color: rgba(26, 13, 31, 0.7);
   line-height: 1.7;
 }
 
 /* ===========================
-   RATIONALE / MANIFESTO SECTION
+   MANIFESTO
    =========================== */
-.rationaleSection {
+.manifestoSection {
   position: relative;
-  padding: 120px 0;
-  background: linear-gradient(135deg, #1a0d1f 0%, #2d1b3d 50%, #3a1f47 100%);
+  padding: 100px 0;
   overflow: hidden;
   color: #fff;
 }
 
-.rationaleOrb1 {
-  position: absolute;
-  width: 700px;
-  height: 700px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(236, 72, 153, 0.25) 0%, transparent 70%);
-  top: -250px;
-  right: -150px;
-  filter: blur(80px);
-  pointer-events: none;
-  animation: floatOrb 20s ease-in-out infinite;
-}
-
-.rationaleOrb2 {
-  position: absolute;
-  width: 600px;
-  height: 600px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(168, 85, 247, 0.2) 0%, transparent 70%);
-  bottom: -200px;
-  left: -100px;
-  filter: blur(80px);
-  pointer-events: none;
-  animation: floatOrb 25s ease-in-out infinite reverse;
-}
-
-/* subtle grid pattern overlay */
-.rationaleSection::before {
-  content: '';
+.manifestoBg {
   position: absolute;
   inset: 0;
-  background-image:
-    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
-  background-size: 50px 50px;
-  pointer-events: none;
-  opacity: 0.3;
+  z-index: 0;
+  background:
+    linear-gradient(180deg, rgba(26, 13, 31, 0.82) 0%, rgba(26, 13, 31, 0.92) 55%, rgba(26, 13, 31, 0.97) 100%),
+    url('/images/about/manifesto-bg.jpg') center / cover no-repeat,
+    linear-gradient(135deg, #1a0d1f 0%, #2d1b3d 50%, #3a1f47 100%);
 }
 
-.rationaleInner {
-  position: relative;
-  max-width: 900px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.rationaleTitle {
-  font-family: var(--font-playfair);
-  font-size: clamp(36px, 4.8vw, 58px);
-  font-weight: 800;
-  color: #fff;
-  margin-bottom: 28px;
-  line-height: 1.18;
-  letter-spacing: -0.01em;
-}
-
-.rationaleText {
-  font-size: 17px;
-  color: rgba(255, 255, 255, 0.85);
-  line-height: 1.8;
-  max-width: 760px;
-  margin: 0 auto 60px;
-}
-
-.rationaleStats {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(236, 72, 153, 0.25);
-  border-radius: 20px;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  overflow: hidden;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
-}
-
-.rationaleStat {
-  flex: 1;
-  padding: 36px 28px;
-  text-align: center;
-}
-
-.rationaleStatNum {
-  display: block;
-  font-family: var(--font-playfair);
-  font-size: 38px;
-  font-weight: 900;
-  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin-bottom: 8px;
-  line-height: 1;
-}
-
-.rationaleStatLabel {
-  display: block;
-  font-size: 12px;
-  color: rgba(255, 255, 255, 0.6);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-weight: 600;
-}
-
-.rationaleStatDivider {
-  width: 1px;
-  height: 70px;
-  background: rgba(236, 72, 153, 0.3);
-  flex-shrink: 0;
-}
-
-/* ===========================
-   WHERE WE INVEST
-   =========================== */
-.investGrid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-}
-
-.investCard {
-  padding: 40px 28px;
-  border-radius: 20px;
-  background: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-  cursor: default;
-}
-
-.investCard::before {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, #ec4899, #a855f7);
-  transform: scaleX(0);
-  transition: transform 0.3s ease;
-  transform-origin: left;
-}
-
-.investCard:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 24px 56px rgba(168, 85, 247, 0.16);
-  border-color: rgba(236, 72, 153, 0.3);
-}
-
-.investCard:hover::before {
-  transform: scaleX(1);
-}
-
-.investIcon {
-  font-size: 48px;
-  margin-bottom: 20px;
-  display: block;
-}
-
-.investLabel {
-  font-family: var(--font-playfair);
-  font-size: 17px;
-  font-weight: 700;
-  color: #1a0d1f;
-  line-height: 1.4;
-}
-
-/* ===========================
-   PARTNERS
-   =========================== */
-.logoRow {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-}
-
-.logoPill {
-  border: 1px solid rgba(236, 72, 153, 0.2);
-  border-radius: 999px;
-  padding: 14px 32px;
-  font-size: 14px;
-  font-weight: 700;
-  color: #1a0d1f;
-  background: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
-  transition: all 0.3s ease;
-}
-
-.logoPill:hover {
-  border-color: #ec4899;
-  transform: translateY(-3px);
-  box-shadow: 0 12px 32px rgba(236, 72, 153, 0.16);
-  background: rgba(255, 255, 255, 0.8);
-}
-
-/* ===========================
-   TEAM
-   =========================== */
-.teamGrid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-}
-
-.teamCard {
-  position: relative;
-  text-align: center;
-  padding: 44px 24px 36px;
-  border-radius: 20px;
-  background: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
-  overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.teamCard:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 28px 70px rgba(168, 85, 247, 0.2);
-}
-
-.teamCardGlow {
-  position: absolute;
-  width: 250px;
-  height: 250px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(236, 72, 153, 0.15) 0%, transparent 70%);
-  top: -80px;
-  right: -60px;
-  filter: blur(40px);
-  pointer-events: none;
-}
-
-.teamAvatar {
-  width: 90px;
-  height: 90px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #ec4899, #a855f7);
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-playfair);
-  font-size: 32px;
-  font-weight: 700;
-  margin: 0 auto 24px;
-  box-shadow: 0 12px 32px rgba(236, 72, 153, 0.4);
-}
-
-.teamName {
-  font-family: var(--font-playfair);
-  font-size: 18px;
-  font-weight: 700;
-  color: #1a0d1f;
-  margin-bottom: 10px;
-}
-
-.teamRole {
-  font-size: 12px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  background: linear-gradient(135deg, #ec4899, #a855f7);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  line-height: 1.6;
-}
-
-/* ===========================
-   ADVISORS SECTION
-   =========================== */
-.advisorSection {
-  position: relative;
-  padding: 120px 0;
-  background: linear-gradient(135deg, #1a0d1f 0%, #2d1b3d 50%, #3a1f47 100%);
-  overflow: hidden;
-  color: #fff;
-}
-
-.advisorOrb1 {
+.manifestoOrb {
   position: absolute;
   width: 600px;
   height: 600px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(236, 72, 153, 0.22) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(236, 72, 153, 0.2) 0%, transparent 70%);
   top: -200px;
   right: -120px;
   filter: blur(80px);
   pointer-events: none;
   animation: floatOrb 22s ease-in-out infinite;
-}
-
-.advisorOrb2 {
-  position: absolute;
-  width: 500px;
-  height: 500px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(168, 85, 247, 0.25) 0%, transparent 70%);
-  bottom: -150px;
-  left: -100px;
-  filter: blur(80px);
-  pointer-events: none;
-  animation: floatOrb 28s ease-in-out infinite reverse;
-}
-
-/* grid pattern overlay */
-.advisorSection::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
-  background-size: 50px 50px;
-  pointer-events: none;
-  opacity: 0.3;
-}
-
-.advisorGrid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-  position: relative;
   z-index: 1;
 }
 
-.advisorCard {
+.manifestoInner {
   position: relative;
+  z-index: 2;
+  max-width: 820px;
+  margin: 0 auto;
   text-align: center;
-  padding: 36px 20px;
-  border-radius: 20px;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(236, 72, 153, 0.2);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
 }
 
-.advisorCard:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 24px 60px rgba(236, 72, 153, 0.25);
-  background: rgba(255, 255, 255, 0.1);
-}
-
-.advisorAvatar {
-  width: 72px;
-  height: 72px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #ec4899, #a855f7);
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.manifestoTitle {
   font-family: var(--font-playfair);
-  font-size: 26px;
+  font-size: clamp(34px, 4.6vw, 54px);
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 26px;
+  line-height: 1.18;
+  letter-spacing: -0.01em;
+}
+
+.manifestoText {
+  font-size: 17px;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.8;
+}
+
+/* ===========================
+   WHERE WE INVEST — editorial, oversized watermark numerals
+   =========================== */
+.investList {
+  max-width: 820px;
+}
+
+.investItem {
+  position: relative;
+  padding: 38px 0;
+  border-bottom: 1px solid rgba(26, 13, 31, 0.1);
+  overflow: hidden;
+}
+
+.investItem:first-child {
+  border-top: 1px solid rgba(26, 13, 31, 0.1);
+}
+
+.investNum {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--font-playfair);
+  font-weight: 800;
+  font-size: 96px;
+  line-height: 1;
+  color: rgba(26, 13, 31, 0.045);
+  pointer-events: none;
+  transition: color 0.4s ease, transform 0.5s ease;
+  user-select: none;
+}
+
+.investItem:hover .investNum {
+  color: rgba(236, 72, 153, 0.1);
+  transform: translateY(-50%) translateX(-6px);
+}
+
+.investLabel {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-playfair);
+  font-size: 30px;
   font-weight: 700;
-  margin: 0 auto 20px;
-  box-shadow: 0 10px 32px rgba(236, 72, 153, 0.5);
+  color: #1a0d1f;
+  line-height: 1.3;
+  max-width: 70%;
+  transition: transform 0.35s ease, color 0.35s ease;
+}
+
+.investItem:hover .investLabel {
+  transform: translateX(12px);
+  color: #ec4899;
+}
+
+/* ===========================
+   PHOTO PLACEHOLDERS (Board + Advisors)
+   =========================== */
+.photoCircle,
+.photoPortrait {
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.35s ease;
+}
+
+.photoCircle:hover,
+.photoPortrait:hover {
+  transform: scale(1.03);
+}
+
+.photoCircle {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin: 0 auto 18px;
+  box-shadow: 0 10px 28px rgba(236, 72, 153, 0.25);
+}
+
+.photoPortrait {
+  width: 100%;
+  max-width: 220px;
+  aspect-ratio: 3 / 4;
+  border-radius: 20px;
+  margin: 0 auto 24px;
+  box-shadow: 0 20px 50px rgba(26, 13, 31, 0.18);
+}
+
+/* ===========================
+   BOARD OF DIRECTORS
+   =========================== */
+.boardGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 56px;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.boardCard {
+  text-align: center;
+}
+
+.boardName {
+  font-family: var(--font-playfair);
+  font-style: italic;
+  font-size: 22px;
+  color: #1a0d1f;
+  margin-bottom: 8px;
+}
+
+.boardRole {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  background: linear-gradient(135deg, #ec4899, #a855f7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ===========================
+   ADVISORY BOARD
+   =========================== */
+.advisoryGrid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 36px 28px;
+}
+
+.advisorCard {
+  flex: 0 1 190px;
+  text-align: center;
 }
 
 .advisorName {
   font-family: var(--font-playfair);
+  font-style: italic;
   font-size: 16px;
-  font-weight: 700;
-  color: #fff;
-  margin-bottom: 10px;
-  line-height: 1.35;
+  color: #1a0d1f;
+  margin-bottom: 6px;
 }
 
-.advisorRole {
-  font-size: 11px;
-  font-weight: 600;
+.advisorTag {
+  font-size: 10.5px;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.07em;
-  background: linear-gradient(135deg, #fbbf24, #f59e0b);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  line-height: 1.6;
+  letter-spacing: 0.08em;
+  color: rgba(26, 13, 31, 0.5);
+}
+
+/* ===========================
+   PARTNERS — static logo grid
+   (deliberately not a marquee — Testimonials and MediaStrip
+   already own that pattern; this section reads as a settled
+   wall of trust, not another scrolling strip)
+   =========================== */
+.partnersGrid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 56px 64px;
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+.partnerItem {
+  flex: 0 0 auto;
+  width: 190px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.partnerLogoImg {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  filter: grayscale(100%);
+  opacity: 0.55;
+  transition: filter 0.35s ease, opacity 0.35s ease, transform 0.35s ease;
+}
+
+.partnerItem:hover .partnerLogoImg {
+  filter: grayscale(0%);
+  opacity: 1;
+  transform: scale(1.04);
+}
+
+.partnerPlaceholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 10px 12px;
+  border: 1px dashed rgba(26, 13, 31, 0.18);
+  border-radius: 12px;
+  background: rgba(26, 13, 31, 0.02);
+}
+
+.partnerPlaceholder span {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  color: rgba(26, 13, 31, 0.4);
+  line-height: 1.3;
 }
 
 /* ===========================
@@ -745,59 +647,32 @@
 .initiativeCard {
   position: relative;
   padding: 44px 40px;
-  border-radius: 24px;
-  background: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
-  overflow: hidden;
+  border-radius: 20px;
+  background: #fff;
+  border: 1px solid rgba(26, 13, 31, 0.08);
+  box-shadow: 0 16px 40px rgba(26, 13, 31, 0.05);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* Pink-to-purple top accent bar */
-.initiativeCard::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, #ec4899, #a855f7);
-}
-
-/* Subtle watermark number */
-.initiativeCard:first-child::after {
-  content: '01';
-  position: absolute;
-  bottom: -20px;
-  right: 24px;
-  font-family: var(--font-playfair);
-  font-size: 100px;
-  font-style: italic;
-  color: rgba(236, 72, 153, 0.06);
-  font-weight: 900;
-  line-height: 1;
-  pointer-events: none;
-}
-
-.initiativeCard:last-child::after {
-  content: '02';
-  position: absolute;
-  bottom: -20px;
-  right: 24px;
-  font-family: var(--font-playfair);
-  font-size: 100px;
-  font-style: italic;
-  color: rgba(168, 85, 247, 0.06);
-  font-weight: 900;
-  line-height: 1;
-  pointer-events: none;
 }
 
 .initiativeCard:hover {
   transform: translateY(-6px);
-  box-shadow: 0 24px 60px rgba(168, 85, 247, 0.14);
+  box-shadow: 0 24px 56px rgba(168, 85, 247, 0.14);
+}
+
+.initiativeNum {
+  position: absolute;
+  top: 28px;
+  right: 32px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ec4899, #a855f7);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .initiativeBadge {
@@ -806,28 +681,24 @@
   font-weight: 800;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  background: linear-gradient(135deg, #ec4899, #a855f7);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #a855f7;
   margin-bottom: 14px;
 }
 
 .initiativeTitle {
   font-family: var(--font-playfair);
-  font-size: 30px;
+  font-size: 28px;
   font-weight: 800;
   color: #1a0d1f;
-  margin-bottom: 18px;
+  margin-bottom: 16px;
 }
 
 .initiativeDesc {
-  font-size: 16px;
+  font-size: 15.5px;
   color: rgba(26, 13, 31, 0.7);
   line-height: 1.75;
 }
 
-/* Events band */
 .eventsBand {
   display: flex;
   align-items: center;
@@ -836,8 +707,6 @@
   padding: 36px 44px;
   border-radius: 20px;
   background: linear-gradient(135deg, rgba(236, 72, 153, 0.08) 0%, rgba(168, 85, 247, 0.08) 100%);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(236, 72, 153, 0.2);
   flex-wrap: wrap;
 }
@@ -877,14 +746,26 @@
 }
 
 /* ===========================
-   CTA SECTION
+   FINAL CTA
    =========================== */
 .ctaSection {
   position: relative;
-  padding: 120px 0;
+  padding: 88px 0;
   background: linear-gradient(135deg, #1a0d1f 0%, #2d1b3d 50%, #3a1f47 100%);
   overflow: hidden;
   text-align: center;
+}
+
+.ctaSection::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 50px 50px;
+  pointer-events: none;
+  opacity: 0.3;
 }
 
 .ctaOrb1 {
@@ -913,19 +794,6 @@
   animation: floatOrb 20s ease-in-out infinite reverse;
 }
 
-/* grid pattern overlay */
-.ctaSection::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
-  background-size: 50px 50px;
-  pointer-events: none;
-  opacity: 0.3;
-}
-
 .ctaInner {
   position: relative;
   max-width: 760px;
@@ -950,141 +818,277 @@
   flex-wrap: wrap;
 }
 
-.btnPrimary {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  background: linear-gradient(135deg, #ec4899 0%, #a855f7 100%);
-  color: #fff;
-  font-weight: 700;
-  font-size: 15px;
-  padding: 16px 32px;
-  border-radius: 12px;
-  transition: all 0.3s ease;
-  box-shadow: 0 10px 30px rgba(236, 72, 153, 0.4);
-  position: relative;
-  overflow: hidden;
-}
-
-.btnPrimary::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  transition: left 0.5s ease;
-}
-
-.btnPrimary:hover::before {
-  left: 100%;
-}
-
-.btnPrimary:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 14px 40px rgba(236, 72, 153, 0.55);
-}
-
-.btnGlass {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1.5px solid rgba(255, 255, 255, 0.2);
-  color: #fff;
-  font-weight: 600;
-  font-size: 14px;
-  padding: 14px 26px;
-  border-radius: 12px;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  transition: all 0.3s ease;
-}
-
-.btnGlass:hover {
-  background: rgba(255, 255, 255, 0.15);
-  border-color: rgba(255, 255, 255, 0.3);
-  transform: translateY(-3px);
-}
-
 /* ===========================
    RESPONSIVE
    =========================== */
 
-@media (max-width: 1100px) {
-  .investGrid {
-    grid-template-columns: repeat(2, 1fr);
+@media (max-width: 1024px) {
+  .storySection {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "header"
+      "photo"
+      "timeline";
+    row-gap: 32px;
   }
-}
 
-@media (max-width: 980px) {
+  .storyPhoto {
+    position: static;
+    width: 100%;
+    max-width: 360px;
+    margin: 0 auto;
+  }
+
   .fundGrid {
     grid-template-columns: 1fr;
     gap: 48px;
   }
-  .teamGrid,
-  .advisorGrid {
-    grid-template-columns: repeat(2, 1fr);
+
+  .boardGrid {
+    max-width: 480px;
   }
+}
+
+@media (max-width: 780px) {
+  .investItem {
+    padding: 28px 0;
+  }
+
+  .investNum {
+    font-size: 64px;
+  }
+
+  .investLabel {
+    font-size: 22px;
+    max-width: 78%;
+  }
+
   .initiativeGrid {
     grid-template-columns: 1fr;
   }
+
+  .initiativeCard {
+    padding: 32px 28px;
+  }
+
   .eventsBand {
     flex-direction: column;
     align-items: flex-start;
-    padding: 32px 32px;
+    padding: 28px 24px;
   }
-  .rationaleStats {
-    flex-direction: column;
-    gap: 0;
-  }
-  .rationaleStatDivider {
-    width: 60%;
-    height: 1px;
-    align-self: center;
+
+  .boardGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    max-width: 380px;
   }
 }
 
 @media (max-width: 640px) {
-  .teamGrid,
-  .advisorGrid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
-  }
-  .investGrid {
-    grid-template-columns: 1fr 1fr;
-  }
   .section,
   .sectionAlt {
-    padding: 80px 0;
+    padding: 56px 0;
   }
-  .rationaleSection,
-  .advisorSection,
+
+  .firstSection {
+    padding-top: 110px;
+  }
+
+  .manifestoSection {
+    padding: 72px 0;
+  }
+
   .ctaSection {
-    padding: 80px 0;
+    padding: 64px 0;
   }
+
   .sectionHeader {
-    margin-bottom: 56px;
+    margin-bottom: 32px;
+  }
+
+  .sectionTitle,
+  .sectionTitleLight {
+    font-size: 28px;
+    line-height: 1.3;
+  }
+
+  .fundTitle {
+    font-size: 26px;
+    line-height: 1.28;
+  }
+
+  .fundLead {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  .fundBody {
+    font-size: 14.5px;
+  }
+
+  .manifestoTitle {
+    font-size: 30px;
+  }
+
+  .manifestoText {
+    font-size: 15px;
+  }
+
+  .ctaTitle {
+    font-size: 28px;
+    margin-bottom: 28px;
+  }
+
+  .timelineYear {
+    font-size: 18px;
+  }
+
+  .timelineText {
+    font-size: 14px;
+  }
+
+  .investLabel {
+    font-size: 19px;
+    max-width: 82%;
+  }
+
+  .investNum {
+    font-size: 48px;
+  }
+
+  .investItem {
+    padding: 22px 0;
+  }
+
+  .initiativeTitle {
+    font-size: 21px;
+    margin-bottom: 10px;
+  }
+
+  .initiativeDesc {
+    font-size: 14px;
+  }
+
+  .initiativeCard {
+    padding: 26px 22px;
+  }
+
+  .initiativeNum {
+    width: 28px;
+    height: 28px;
+    font-size: 10.5px;
+    top: 20px;
+    right: 22px;
+  }
+
+  .eventsSubtext {
+    font-size: 13px;
+  }
+
+  .eventPill {
+    font-size: 13px;
+    padding: 10px 20px;
+  }
+
+  .btnPrimary {
+    width: 100%;
+    justify-content: center;
+    font-size: 13.5px;
+    padding: 14px 24px;
+    gap: 8px;
+    border-radius: 10px;
+  }
+
+  .btnGlass {
+    width: 100%;
+    justify-content: center;
+    font-size: 13px;
+    padding: 12px 22px;
+    border-radius: 10px;
+  }
+
+  .btnPrimary svg,
+  .btnGlass svg {
+    width: 13px;
+    height: 13px;
+  }
+
+  .ctaActions {
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .boardGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    max-width: 320px;
+  }
+
+  .photoPortrait {
+    max-width: 130px;
+    margin: 0 auto 14px;
+  }
+
+  .boardName {
+    font-size: 16px;
+  }
+
+  .boardRole {
+    font-size: 10px;
+  }
+
+  .impactPanel {
+    padding: 32px 26px;
+  }
+
+  .impactRow {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .impactCompare {
+    flex-direction: column;
+  }
+
+  .advisorCard {
+    flex: 0 1 140px;
+  }
+
+  .advisorName {
+    font-size: 14.5px;
+  }
+
+  .photoCircle {
+    width: 96px;
+    height: 96px;
+  }
+
+  .partnersGrid {
+    gap: 36px 32px;
+  }
+
+  .partnerItem {
+    width: 110px;
+    height: 65px;
+  }
+
+  .storySection {
+    row-gap: 24px;
+  }
+
+  .storyPhotoImg {
+    max-height: 240px;
   }
 }
 
-@media (max-width: 440px) {
-  .teamGrid,
-  .advisorGrid {
-    grid-template-columns: 1fr;
-    max-width: 320px;
-    margin-left: auto;
-    margin-right: auto;
+@media (max-width: 420px) {
+  .boardGrid {
+    max-width: 280px;
+    gap: 12px;
   }
-  .investGrid {
-    grid-template-columns: 1fr;
-  }
-  .section,
-  .sectionAlt,
-  .rationaleSection,
-  .advisorSection,
-  .ctaSection {
-    padding: 60px 0;
+
+  .photoPortrait {
+    max-width: 110px;
   }
 }

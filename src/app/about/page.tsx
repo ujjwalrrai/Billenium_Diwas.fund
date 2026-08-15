@@ -1,164 +1,158 @@
 import type { Metadata } from 'next';
 import PageHero from '@/components/PageHero';
-import Stats from '@/components/Stats';
-import Testimonials from '@/components/Testimonials';
 import MediaStrip from '@/components/MediaStrip';
+import PartnerLogo from './PartnerLogo';
 import styles from './about.module.css';
 
 export const metadata: Metadata = { title: 'About – Billennium Divas' };
 
-const PARTNERS = [
-  'SSIP Gujarat', 'AP Innovation Society', 'AICRAISE',
-  'EDI India', 'Craywingz', 'CMF Asia', 'CIMSME',
-];
-
-const TEAM = [
-  { name: 'Minal Kothari', role: 'Co-Founder & Director', emoji: 'MK' },
-  { name: 'Bhavesh Kothari', role: 'Co-Founder & Director', emoji: 'BK' },
-  { name: 'Pratik Lalani', role: 'Entrepreneur In Residence', emoji: 'PL' },
-  { name: 'Purvang Joshi', role: 'Entrepreneur In Residence', emoji: 'PJ' },
-];
-
-const ADVISORS = [
-  { name: 'Shweta Shalini', role: 'Chief Evangelist, Executive Director – MVSTF (GoM)' },
-  { name: 'Tapaswi Patel', role: 'CMD, Tapaswi Group' },
-  { name: 'Nabomita Mazumdar', role: 'Principal Evangelist, Founder – Nabomita.com' },
-  { name: 'Ms. Rajashri Rajashekhar', role: 'Principal Evangelist, Founder – Poornam Foundation' },
-  { name: 'Rtn Alpa Shah', role: 'Principal Evangelist, Social Entrepreneur & Finance Expert' },
-  { name: 'Shubhangi Mitra', role: 'Principal Evangelist – UK & Europe, Managing Partner – Solacexis' },
-  { name: 'Aparna Mishra', role: 'Principal Evangelist, Founder – Women Shine' },
-  { name: 'Ms. Shoma Mittra', role: 'Principal Evangelist – Australia, Director – WriteClickWriting' },
+const MILESTONES = [
+  {
+    year: '2017',
+    text:
+      'Founded at the Global Entrepreneurship Summit by Minal Kothari, Bhavesh Kothari and Tapaswi Patel — launched by Shweta Shalini, Shilpa Shetty Kundra and Vishakha Singh.',
+  },
+  {
+    year: 'Today',
+    text: 'Recognized as the second women-only venture capital fund in India.',
+  },
+  {
+    year: '₹25L–₹5Cr',
+    text: 'Our typical ticket size for early-stage, sector-agnostic investments.',
+  },
 ];
 
 const WHERE_WE_INVEST = [
-  { icon: '🛒', label: 'B2B & B2C Marketplace' },
-  { icon: '💻', label: 'E-Commerce & Tech' },
-  { icon: '🌐', label: 'Web-Enabled Services' },
-  { icon: '🤝', label: 'Platform & Communities' },
+  'B2B & B2C Marketplace',
+  'E-Commerce & Tech',
+  'Web-Enabled Services',
+  'Platform & Communities',
 ];
 
-function initials(name: string) {
-  const clean = name.replace(/^(Dr\.|Ms\.|Mr\.|Rtn)\s+/i, '');
-  const parts = clean.split(' ').filter(Boolean);
-  return (parts[0]?.[0] ?? '') + (parts[1]?.[0] ?? '');
-}
+const BOARD = [
+  { name: 'Ms. Minal Kothari', role: 'Co-Founder & Director', image: '/images/board/minal-kothari.jpg' },
+  { name: 'Mr. Bhavesh Kothari', role: 'Co-Founder & Director', image: '/images/board/bhavesh-kothari.jpg' },
+];
+
+const ADVISORS = [
+  { name: 'Shweta Shalini', image: '/images/advisors/shweta-shalini.jpg' },
+  { name: 'Tapaswi Patel', image: '/images/advisors/tapaswi-patel.jpg' },
+  { name: 'Adhiraj Banerjee', image: '/images/advisors/adhiraj-banerjee.jpg' },
+  { name: 'Amit Singal', image: '/images/advisors/amit-singal.jpg' },
+  { name: 'Rajashri', image: '/images/advisors/rajashri.jpg' },
+  { name: 'Shubhangi Mitra', image: '/images/advisors/shubhangi-mitra.jpg' },
+  { name: 'Ajay Thakur', image: '/images/advisors/ajay-thakur.jpg' },
+];
+
+const PARTNERS = [
+  { name: 'SSIP Gujarat', logo: '/images/partners/ssip.png' },
+  { name: 'AP Innovation Society', logo: '/images/partners/ap-innovation.png' },
+  { name: 'AIC RAISE', logo: '/images/partners/aic-raise.png' },
+  { name: 'EDI India', logo: '/images/partners/edi-india.png' },
+  { name: 'Craywingz', logo: '/images/partners/craywingz.png' },
+  { name: 'CMF Asia', logo: '/images/partners/cmf-asia.png' },
+  { name: 'CIMSME', logo: '/images/partners/cimsme.png' },
+];
+
+const INITIATIVES = [
+  {
+    title: 'WEFORME',
+    desc: 'Equipping ex-corporate, urban married women with the skills, confidence and support to build a business of their own.',
+  },
+  {
+    title: 'Project HOPE',
+    desc: 'Inspiring rural women toward entrepreneurship, backed by a seed fund from Billennium Divas.',
+  },
+];
+
+const EVENTS = ['Women Power', 'W-S.I.S', 'DEBOOT'];
 
 export default function AboutPage() {
   return (
     <>
-      <PageHero
-        crumb="About"
-        title="Backing the women rewriting India's entrepreneurial future."
-        lead="An early-stage micro-equity fund, sector agnostic, built for and by women."
-      />
-
       {/* ─── THE FUND ─── */}
-      <section className={styles.section}>
+      <section className={`${styles.section} ${styles.firstSection}`}>
         <div className="container">
           <div className={styles.fundGrid}>
-            <div className={styles.fundLeft}>
+            <div data-aos="fade-up">
               <span className={styles.eyebrow}>The Fund</span>
               <h2 className={styles.fundTitle}>
                 Capital follows conviction —{' '}
                 <span className={styles.gradientPink}>ours follows women.</span>
               </h2>
               <p className={styles.fundLead}>
-                Women-led enterprises experience more success and fewer failures compared to their
-                male counterparts. Yet venture investment doesn&apos;t reflect this.
+                Women-led enterprises succeed more often and fail less — yet venture capital
+                doesn&apos;t reflect it. Billennium Divas exists to close that gap.
               </p>
               <p className={styles.fundBody}>
-                Business Insider France reported that enterprises founded or co-founded by women
-                receive roughly $935,000 in investment on average, against about $2.1 million for
-                those founded by men — even as women-founded startups generate more per dollar raised.
-              </p>
-              <p className={styles.fundBody}>
-                Billennium Divas Fund was formed to change that. It&apos;s an early-stage micro-equity
-                fund investing in the exponential power of exceptionally talented women
-                entrepreneurs — sector agnostic, for and by women.
+                We&apos;re an early-stage micro-equity fund investing in the exponential
+                potential of exceptionally talented women entrepreneurs — sector-agnostic,
+                and built for and by women.
               </p>
 
-              <a href="mailto:pitch@billenniumdivas.fund" className={styles.btnOutline}>
+              <a href="mailto:pitch@billenniumdivas.fund" className={styles.btnPrimary}>
                 Submit a Pitch Deck
                 <svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-                  <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </a>
-            </div>
-
-            <div className={styles.fundRight}>
-              {/* Big stat card */}
-              <div className={styles.statCard}>
-                <div className={styles.statCardOrb}></div>
-                <div className={styles.statCardOrb2}></div>
-                <div className={styles.statTop}>
-                  <span className={styles.statBig}>78¢</span>
-                  <span className={styles.statLabel}>per $1 raised</span>
-                </div>
-                <p className={styles.statDesc}>
-                  Generated by women-founded startups — vs. just 31¢ for male counterparts.
-                </p>
-                <div className={styles.statDivider}></div>
-                <div className={styles.figRow}>
-                  <span>Women founders avg. funding</span>
-                  <span className={styles.figVal}>$935K</span>
-                </div>
-                <div className={styles.figRow}>
-                  <span>Male founders avg. funding</span>
-                  <span className={styles.figVal}>$2.1M</span>
-                </div>
-              </div>
-
-              {/* The Beginning card */}
-              <div className={styles.beginningCard}>
-                <div className={styles.beginningIcon}>🚀</div>
-                <div>
-                  <div className={styles.beginningTitle}>The Beginning</div>
-                  <p className={styles.beginningText}>
-                    Founded by Minal Kothari, Bhavesh Kothari and Tapaswi Patel. Launched by
-                    Shweta Shalini, Shilpa Shetty Kundra and Vishakha Singh on 17 Nov 2017 at
-                    Global Entrepreneurship Summit (GES) 2017.
-                  </p>
-                </div>
-              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ─── THE RATIONALE / MANIFESTO BAND ─── */}
-      <section className={styles.rationaleSection}>
-        <div className={styles.rationaleOrb1}></div>
-        <div className={styles.rationaleOrb2}></div>
+      {/* ─── MILESTONES / OUR STORY ─── */}
+<section className={styles.sectionAlt}>
+  <div className="container">
+    <div className={styles.storySection}>
+      <div className={styles.sectionHeader} data-aos="fade-up">
+        <span className={styles.eyebrow}>Our Story</span>
+        <h2 className={styles.sectionTitle}>Six years of building.</h2>
+      </div>
+
+      <div className={styles.storyPhoto} data-aos="fade-up" data-aos-delay="150">
+        <div
+          className={styles.storyPhotoImg}
+          style={{ backgroundImage: 'url(/images/BD_launch.png), linear-gradient(135deg, #ec4899, #a855f7)' }}
+          role="img"
+          aria-label="Billennium Divas team"
+        />
+      </div>
+
+      <div className={styles.timeline} data-aos="fade-up">
+        {MILESTONES.map((m) => (
+          <div className={styles.timelineItem} key={m.year}>
+            <div className={styles.timelineMarker}>
+              <div className={styles.timelineDot} />
+              <div className={styles.timelineLine} />
+            </div>
+            <div>
+              <div className={styles.timelineYear}>{m.year}</div>
+              <p className={styles.timelineText}>{m.text}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+      {/* ─── MANIFESTO (the one full-bleed dramatic moment) ─── */}
+      <section className={styles.manifestoSection}>
+        <div className={styles.manifestoBg} aria-hidden="true" />
+        <div className={styles.manifestoOrb} aria-hidden="true" />
         <div className="container">
-          <div className={styles.rationaleInner}>
+          <div className={styles.manifestoInner} data-aos="fade-up">
             <span className={styles.eyebrowLight}>The Rationale</span>
-            <h2 className={styles.rationaleTitle}>
+            <h2 className={styles.manifestoTitle}>
               A Billion Millenniums.<br />
               <span className={styles.gradientGold}>One Unstoppable Mission.</span>
             </h2>
-            <p className={styles.rationaleText}>
-              Billennium Divas is a mission for the women entrepreneurs who define and reign the
-              future with their steadfast drive to change the status quo. It&apos;s not just a venture
-              fund — it&apos;s a sum total of everything that cohesively enables and empowers the
-              entrepreneurial ecosystem for enterprising women. An umbrella of works, activities
-              and support systems to grow and sustain for years to come.
+            <p className={styles.manifestoText}>
+              Billennium Divas is more than a venture fund — it&apos;s a mission for the women
+              entrepreneurs defining the future on their own terms. An umbrella of capital,
+              mentorship and community, built to grow for years to come.
             </p>
-            <div className={styles.rationaleStats}>
-              <div className={styles.rationaleStat}>
-                <span className={styles.rationaleStatNum}>2017</span>
-                <span className={styles.rationaleStatLabel}>Founded at GES</span>
-              </div>
-              <div className={styles.rationaleStatDivider}></div>
-              <div className={styles.rationaleStat}>
-                <span className={styles.rationaleStatNum}>2nd</span>
-                <span className={styles.rationaleStatLabel}>Women-only VC in India</span>
-              </div>
-              <div className={styles.rationaleStatDivider}></div>
-              <div className={styles.rationaleStat}>
-                <span className={styles.rationaleStatNum}>₹25L–₹5Cr</span>
-                <span className={styles.rationaleStatLabel}>Ticket Size</span>
-              </div>
-            </div>
           </div>
         </div>
       </section>
@@ -166,18 +160,67 @@ export default function AboutPage() {
       {/* ─── WHERE WE INVEST ─── */}
       <section className={styles.section}>
         <div className="container">
-          <div className={styles.sectionHeader}>
+          <div className={styles.sectionHeader} data-aos="fade-up">
             <span className={styles.eyebrow}>Where We Invest</span>
             <h2 className={styles.sectionTitle}>
               Focused on sectors where{' '}
-              <span className={styles.gradientPink}>women-led startups</span> have incredible impact
+              <span className={styles.gradientPink}>women-led startups</span> create outsized
+              impact
             </h2>
           </div>
-          <div className={styles.investGrid}>
-            {WHERE_WE_INVEST.map((item) => (
-              <div className={styles.investCard} key={item.label}>
-                <div className={styles.investIcon}>{item.icon}</div>
-                <div className={styles.investLabel}>{item.label}</div>
+          <div className={styles.investList}>
+            {WHERE_WE_INVEST.map((label, i) => (
+              <div className={styles.investItem} key={label} data-aos="fade-up" data-aos-delay={i * 80}>
+                <span className={styles.investNum}>{String(i + 1).padStart(2, '0')}</span>
+                <div className={styles.investLabel}>{label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── BOARD OF DIRECTORS ─── */}
+      <section className={styles.sectionAlt}>
+        <div className="container">
+          <div className={styles.sectionHeader} data-aos="fade-up">
+            <span className={styles.eyebrow}>Leadership</span>
+            <h2 className={styles.sectionTitle}>Board of Directors</h2>
+          </div>
+          <div className={styles.boardGrid}>
+            {BOARD.map((p, i) => (
+              <div className={styles.boardCard} key={p.name} data-aos="fade-up" data-aos-delay={i * 100}>
+                <div
+                  className={styles.photoPortrait}
+                  style={{ backgroundImage: `url(${p.image}), linear-gradient(135deg, #ec4899, #a855f7)` }}
+                  role="img"
+                  aria-label={p.name}
+                />
+                <div className={styles.boardName}>{p.name}</div>
+                <div className={styles.boardRole}>{p.role}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── ADVISORY BOARD ─── */}
+      <section className={styles.section}>
+        <div className="container">
+          <div className={styles.sectionHeader} data-aos="fade-up">
+            <span className={styles.eyebrow}>Advisory Board</span>
+            <h2 className={styles.sectionTitle}>Guided by leaders who share our conviction.</h2>
+          </div>
+          <div className={styles.advisoryGrid}>
+            {ADVISORS.map((p, i) => (
+              <div className={styles.advisorCard} key={p.name} data-aos="fade-up" data-aos-delay={i * 60}>
+                <div
+                  className={styles.photoCircle}
+                  style={{ backgroundImage: `url(${p.image}), linear-gradient(135deg, #ec4899, #a855f7)` }}
+                  role="img"
+                  aria-label={p.name}
+                />
+                <div className={styles.advisorName}>{p.name}</div>
+                <div className={styles.advisorTag}>Advisory Board Member</div>
               </div>
             ))}
           </div>
@@ -187,126 +230,32 @@ export default function AboutPage() {
       {/* ─── PARTNERS ─── */}
       <section className={styles.sectionAlt}>
         <div className="container">
-          <div className={styles.sectionHeader}>
+          <div className={styles.sectionHeader} data-aos="fade-up">
             <span className={styles.eyebrow}>Partners</span>
             <h2 className={styles.sectionTitle}>
               Backed by <span className={styles.gradientPink}>trusted institutions</span>
             </h2>
           </div>
-          <div className={styles.logoRow}>
-            {PARTNERS.map((p) => (
-              <span className={styles.logoPill} key={p}>{p}</span>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      {/* ─── THE FUTURE ─── */}
-      <section className={styles.section}>
-        <div className="container">
-          <div className={styles.fundGrid}>
-            <div className={styles.statCardAlt}>
-              <div className={styles.statCardOrb}></div>
-              <div className={styles.statTop}>
-                <span className={styles.statBig}>14%</span>
-                <span className={styles.statLabel}>of India&apos;s entrepreneurs</span>
-              </div>
-              <p className={styles.statDesc}>
-                Only 8.05 million of India&apos;s 58.5 million entrepreneurs are women — per the
-                Sixth Economic Census.
-              </p>
-              <div className={styles.statDivider}></div>
-              <div className={styles.figRow}>
-                <span>Agriculture sector</span>
-                <span className={styles.figVal}>2.76M</span>
-              </div>
-              <div className={styles.figRow}>
-                <span>Non-agriculture sector</span>
-                <span className={styles.figVal}>5.29M</span>
-              </div>
-              <div className={styles.figRow}>
-                <span>Growth vs. 20 years ago</span>
-                <span className={styles.figVal}>+114%</span>
-              </div>
-            </div>
-
-            <div className={styles.fundLeft}>
-              <span className={styles.eyebrow}>The Future</span>
-              <h2 className={styles.fundTitle}>
-                <span className={styles.gradientPink}>114%</span> more women entrepreneurs
-                than 20 years ago.
-              </h2>
-              <p className={styles.fundLead}>
-                Yet India&apos;s statistics tell a far more complex story. Progress is real —
-                but the gap is enormous.
-              </p>
-              <p className={styles.fundBody}>
-                Per the Sixth Economic Census, women constitute around 14% of total
-                entrepreneurship — 8.05 million of 58.5 million entrepreneurs. 2.76 million
-                work in agriculture; 5.29 million in non-agriculture. Average employment in
-                women-owned enterprises remains a modest 1.67.
-              </p>
-              <p className={styles.fundBody}>
-                For Billennium Divas, the mission is to change these numbers as much as we
-                possibly can. There are miles to go before we sleep.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ─── THE TEAM ─── */}
-      <section className={styles.sectionAlt}>
-        <div className="container">
-          <div className={styles.sectionHeader}>
-            <span className={styles.eyebrow}>The Team</span>
-            <h2 className={styles.sectionTitle}>
-              Built by <span className={styles.gradientPink}>entrepreneurs</span>, for entrepreneurs
-            </h2>
-          </div>
-          <div className={styles.teamGrid}>
-            {TEAM.map((p) => (
-              <div className={styles.teamCard} key={p.name}>
-                <div className={styles.teamCardGlow}></div>
-                <div className={styles.teamAvatar}>{initials(p.name)}</div>
-                <div className={styles.teamName}>{p.name}</div>
-                <div className={styles.teamRole}>{p.role}</div>
+          <div className={styles.partnersGrid}>
+            {PARTNERS.map((p, i) => (
+              <div
+                className={styles.partnerItem}
+                key={p.name}
+                data-aos="fade-up"
+                data-aos-delay={i * 70}
+              >
+                <PartnerLogo name={p.name} src={p.logo} />
               </div>
             ))}
           </div>
         </div>
       </section>
-
-      {/* ─── ADVISORS ─── */}
-      <section className={styles.advisorSection}>
-        <div className={styles.advisorOrb1}></div>
-        <div className={styles.advisorOrb2}></div>
-        <div className="container">
-          <div className={styles.sectionHeader}>
-            <span className={styles.eyebrowLight}>Advisors</span>
-            <h2 className={styles.sectionTitleLight}>
-              Guided by <span className={styles.gradientGold}>luminaries</span>
-            </h2>
-          </div>
-          <div className={styles.advisorGrid}>
-            {ADVISORS.map((p) => (
-              <div className={styles.advisorCard} key={p.name}>
-                <div className={styles.advisorAvatar}>{initials(p.name)}</div>
-                <div className={styles.advisorName}>{p.name}</div>
-                <div className={styles.advisorRole}>{p.role}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <Stats />
-      <Testimonials />
 
       {/* ─── INITIATIVES & EVENTS ─── */}
       <section className={styles.section}>
         <div className="container">
-          <div className={styles.sectionHeader}>
+          <div className={styles.sectionHeader} data-aos="fade-up">
             <span className={styles.eyebrow}>The Initiatives &amp; Events</span>
             <h2 className={styles.sectionTitle}>
               Programs that <span className={styles.gradientPink}>move the needle</span>
@@ -314,26 +263,17 @@ export default function AboutPage() {
           </div>
 
           <div className={styles.initiativeGrid}>
-            <div className={styles.initiativeCard}>
-              <div className={styles.initiativeBadge}>Initiative</div>
-              <h3 className={styles.initiativeTitle}>WEFORME</h3>
-              <p className={styles.initiativeDesc}>
-                An initiative for equipping ex-corporate urban married women with the skills,
-                confidence and support they need to incept and install a business of their own —
-                turning ideas into possibilities of a successful future.
-              </p>
-            </div>
-            <div className={styles.initiativeCard}>
-              <div className={styles.initiativeBadge}>Initiative</div>
-              <h3 className={styles.initiativeTitle}>Project HOPE</h3>
-              <p className={styles.initiativeDesc}>
-                An initiative for rural women, inspiring them to engage and endeavor in
-                entrepreneurship, backed by a seed fund from Billennium Divas.
-              </p>
-            </div>
+            {INITIATIVES.map((item, i) => (
+              <div className={styles.initiativeCard} key={item.title} data-aos="fade-up" data-aos-delay={i * 100}>
+                <div className={styles.initiativeNum}>{String(i + 1).padStart(2, '0')}</div>
+                <div className={styles.initiativeBadge}>Initiative</div>
+                <h3 className={styles.initiativeTitle}>{item.title}</h3>
+                <p className={styles.initiativeDesc}>{item.desc}</p>
+              </div>
+            ))}
           </div>
 
-          <div className={styles.eventsBand}>
+          <div className={styles.eventsBand} data-aos="fade-up">
             <div className={styles.eventsBandLeft}>
               <span className={styles.eyebrow}>Signature Events</span>
               <p className={styles.eventsSubtext}>
@@ -341,9 +281,9 @@ export default function AboutPage() {
               </p>
             </div>
             <div className={styles.eventPills}>
-              <span className={styles.eventPill}>Women Power</span>
-              <span className={styles.eventPill}>W-S.I.S</span>
-              <span className={styles.eventPill}>DEBOOT</span>
+              {EVENTS.map((e) => (
+                <span className={styles.eventPill} key={e}>{e}</span>
+              ))}
             </div>
           </div>
         </div>
@@ -364,7 +304,7 @@ export default function AboutPage() {
               <a href="mailto:pitch@billenniumdivas.fund" className={styles.btnPrimary}>
                 Submit Pitch Deck
                 <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-                  <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </a>
               <a href="https://event.billenniumdivas.fund/" className={styles.btnGlass}>

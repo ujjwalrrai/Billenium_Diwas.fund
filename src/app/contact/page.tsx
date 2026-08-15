@@ -32,12 +32,7 @@ const CONTACTS = [
 export default function ContactPage() {
   return (
     <>
-      <PageHero
-        crumb="Contact"
-        title="Let's talk about what you're building."
-        lead="Reach our team directly, or find us at our Navi Mumbai and Ahmedabad offices."
-      />
-
+     
       <section className={styles.section}>
         <div className={styles.sectionBg} aria-hidden="true" />
 
