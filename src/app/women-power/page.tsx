@@ -1,128 +1,176 @@
 import type { Metadata } from 'next';
-import PageHero from '@/components/PageHero';
+import TiltedGallery from '@/components/TiltedGallery';
 import styles from './women-power.module.css';
 
 export const metadata: Metadata = { title: 'The Women Power – Billennium Divas' };
 
+// Fetch gallery images from Supabase
+async function getGalleryImages() {
+  try {
+    const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
+    const res = await fetch(`${baseUrl}/api/gallery/images`, {
+      cache: 'no-store'
+    });
+    
+    if (!res.ok) {
+      console.error('Failed to fetch gallery images');
+      return [];
+    }
+    
+    const data = await res.json();
+    return data.images || [];
+  } catch (error) {
+    console.error('Error fetching gallery images:', error);
+    return [];
+  }
+}
+
 const SPEAKERS = [
-  'Shweta Shalini', 'Anju Sharma IAS', 'Moli Shree IES', 'Sulajja Firodia Motwani',
-  'Usha Kakade', 'Revathy Roy', 'Fatema Agarkar', 'Nabomita Mazumdar',
-  'Apoorva Palkar', 'Shanta Vallury Gandhi',
+  'Industry Leaders', 'Investors', 'Women Entrepreneurs', 'Startup Founders',
+  'Ecosystem Enablers', 'Policy Makers', 'Corporate Leaders', 'Mentors',
 ];
 
 const PARTNERS = [
-  'Government of Gujarat', 'Bombay Stock Exchange', 'IIT Mumbai', 'CNBC Young Turks',
-  'National Stock Exchange', 'Savitribai Phule Pune University', 'TiE', 'FICCI',
-  'Kotak Mahindra Bank', 'Bank of Baroda', 'Vertices Partners',
+  'National Stock Exchange', 'Technology Partners', 'Knowledge Partners', 
+  'Community Allies', 'Investor Networks', 'Media Partners',
 ];
 
-const EDITIONS = [
-  { year: '2016', city: 'Mumbai' },
-  { year: '2017', city: 'Mumbai' },
-  { year: '2019', city: 'Mumbai' },
-  { year: '2019', city: 'Ahmedabad' },
-  { year: '2019', city: 'Pune' },
+const FEATURES = [
+  { number: '35+', label: 'Expert Speakers' },
+  { number: '40', label: 'Award Categories' },
+  { number: '250+', label: 'Entrepreneurs' },
+  { number: '10', label: 'Startup Pitches' },
 ];
 
-export default function WomenPowerPage() {
+export default async function WomenPowerPage() {
+  const images = await getGalleryImages();
+
   return (
     <>
-      <PageHero
-        crumb="Women Power"
-        title="A stage for the women who defied the odds."
-        lead="Launched in 2016, Women Power has become a signature knowledge-sharing platform in India's women startup and entrepreneurial ecosystem."
-      />
+      {/* Gallery at the very top */}
+      <section style={{ padding: 0, margin: 0 }}>
+        <TiltedGallery images={images} />
+      </section>
 
-      {/* Intro */}
-      <section className={styles.section}>
-        <div className={`container ${styles.introGrid}`}>
-          <div>
-            <span className={styles.sectionEyebrow}>The Women Power</span>
-            <h2 className={styles.introTitle}>
-              Five editions.{' '}
-              <span className={styles.gradientText}>One growing movement.</span>
-            </h2>
-            <div className={styles.introBody}>
-              <p>
-                &lsquo;Women Power&rsquo; is an inspiring knowledge-sharing platform created for women who
-                have defied the odds and emerged into the world of entrepreneurship. It&rsquo;s the
-                brainchild of Bhavesh Kothari — a startup mentor, business advisor and entrepreneur
-                who has been a driving force in India&rsquo;s startup industry for over a decade.
-              </p>
-              <p>
-                From its launch in 2016, Women Power has become a signature event in the women
-                startup and entrepreneurial ecosystem. It has evolved to become the most sought-after
-                platform for women entrepreneurs to get educated, express ideas and explore growth
-                opportunities in collaboration with marquee institutions.
-              </p>
-            </div>
-          </div>
-          <div className={styles.mediaCard}>
-            <div className={styles.mediaCardGlow}></div>
-            <span className={styles.mediaCardLabel}>Power, Unleashed on stage.</span>
+      {/* Hero content */}
+      <section className={styles.heroSection}>
+        <div className="container">
+          <div className={styles.heroContent}>
+            <h1 className={styles.heroTitle}>
+              Women <span className={styles.gradientText}>Power</span> Summit
+            </h1>
+            <p className={styles.heroLead}>
+              India's most prestigious platform celebrating women entrepreneurship excellence
+            </p>
+            <p className={styles.heroTagline}>
+              #BreakFree · #BeThePower
+            </p>
           </div>
         </div>
       </section>
 
-      {/* Featured Speakers & Partners */}
-      <section className={styles.sectionDark}>
+      {/* Stats */}
+      <section className={styles.statsSection}>
         <div className="container">
-          <span className={styles.sectionEyebrowLight}>Featured Speakers</span>
-          <div className={styles.speakerRow}>
-            {SPEAKERS.map((s) => (
-              <span className={styles.speakerPillDark} key={s}>{s}</span>
-            ))}
-          </div>
-
-          <div style={{ marginTop: 52 }}>
-            <span className={styles.sectionEyebrowLight}>In Collaboration With</span>
-            <div className={styles.partnerRow}>
-              {PARTNERS.map((p) => (
-                <span className={styles.partnerPillDark} key={p}>{p}</span>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Gallery */}
-      <section className={styles.section}>
-        <div className="container">
-          <span className={styles.sectionEyebrow}>The Gallery</span>
-          <div className={styles.galleryGrid}>
-            <div className={styles.galleryItem}>Govt. of Gujarat MoU</div>
-            <div className={styles.galleryItem}>Women Power, Mumbai</div>
-            <div className={styles.galleryItem}>Women Power, Pune 2019</div>
-          </div>
-        </div>
-      </section>
-
-      {/* Editions */}
-      <section className={styles.sectionDark}>
-        <div className="container">
-          <span className={styles.sectionEyebrowLight}>Editions So Far</span>
-          <div className={styles.editionRow}>
-            {EDITIONS.map((e, i) => (
-              <div className={styles.editionCol} key={i}>
-                <span className={styles.editionYear}>{e.year}</span>
-                <span className={styles.editionCity}>{e.city}</span>
+          <div className={styles.statsGrid}>
+            {FEATURES.map((stat, i) => (
+              <div className={styles.statCard} key={i}>
+                <div className={styles.statNumber}>{stat.number}</div>
+                <div className={styles.statLabel}>{stat.label}</div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className={styles.section}>
+      {/* About */}
+      <section className={styles.aboutSection}>
         <div className="container">
-          <div className={styles.ctaBand}>
-            <div className={styles.ctaBandGlow}></div>
-            <h2>
-              Like what you see?{' '}
-              <span className={styles.goldText}>Get in touch.</span>
+          <div className={styles.aboutContent}>
+            <h2 className={styles.aboutTitle}>
+              Championing Women. <span className={styles.gradientText}>Celebrating Excellence.</span>
             </h2>
-            <a href="/contact" className={styles.btnPrimary}>
-              <span>Contact Us</span>
+            <p>
+              The Women Power Summit & Awards is a highly process-driven recognition platform celebrating 
+              business excellence across multiple award categories for women entrepreneurs and ecosystem enablers.
+            </p>
+            <p>
+              Our mission is to understand and address challenges faced by women entrepreneurs while 
+              celebrating excellence across MSMEs, startups, and ecosystem enablers through a rigorous, 
+              fair recognition platform.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Features Grid */}
+      {/* <section className={styles.featuresSection}>
+        <div className="container">
+          <div className={styles.featuresGrid}>
+            <div className={styles.featureCard}>
+              <div className={styles.featureIcon}>🏆</div>
+              <h3>40 Award Categories</h3>
+              <p>30 categories for women entrepreneurs & women-led startups, plus 10 open categories for ecosystem enablers</p>
+            </div>
+            <div className={styles.featureCard}>
+              <div className={styles.featureIcon}>🎤</div>
+              <h3>Expert Speakers & Panels</h3>
+              <p>Fireside chats, panel discussions, and keynotes from industry leaders and successful entrepreneurs</p>
+            </div>
+            <div className={styles.featureCard}>
+              <div className={styles.featureIcon}>🚀</div>
+              <h3>PitchPower Sessions</h3>
+              <p>Live pitch opportunities for startups to present to marquee investors and ecosystem partners</p>
+            </div>
+            <div className={styles.featureCard}>
+              <div className={styles.featureIcon}>🤝</div>
+              <h3>Power Networking</h3>
+              <p>Connect with 250+ entrepreneurs, investors, mentors & ecosystem enablers</p>
+            </div>
+          </div>
+        </div>
+      </section> */}
+
+      {/* Speakers */}
+      {/* <section className={styles.speakersSection}>
+        <div className="container">
+          <h3 className={styles.sectionTitle}>Summit Participants</h3>
+          <div className={styles.speakerGrid}>
+            {SPEAKERS.map((s) => (
+              <span className={styles.speakerName} key={s}>{s}</span>
+            ))}
+          </div>
+        </div>
+      </section> */}
+
+      {/* Partners */}
+      {/* <section className={styles.partnersSection}>
+        <div className="container">
+          <h3 className={styles.sectionTitle}>Partners & Ecosystem</h3>
+          <p className={styles.partnersIntro}>
+            Powered by a strong ecosystem of knowledge partners, investors, community allies, 
+            and enablers who share Billennium Divas' mission of inclusive growth.
+          </p>
+          <div className={styles.partnerGrid}>
+            {PARTNERS.map((p) => (
+              <span className={styles.partnerName} key={p}>{p}</span>
+            ))}
+          </div>
+        </div>
+      </section> */}
+
+      {/* CTA */}
+      <section className={styles.ctaSection}>
+        <div className="container">
+          <div className={styles.ctaContent}>
+            <h2 className={styles.ctaTitle}>
+              Join the <span className={styles.gradientText}>Movement</span>
+            </h2>
+            <p className={styles.ctaSubtext}>
+              Be part of India's premier platform for women entrepreneurship
+            </p>
+            <a href="/contact" className={styles.ctaButton}>
+              Get in Touch
               <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true">
                 <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>

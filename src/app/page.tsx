@@ -12,24 +12,27 @@ const FOCUS_AREAS = [
   {
     title: 'Tech & SaaS',
     desc: 'Software platforms solving real-world problems at scale.',
-    image: '/images/focus-tech.jpg'
+    image: '/images/focus-saas1.png'
   },
   {
-    title: 'D2C & E-Commerce',
+    title: 'D2C & E-Commerce',  
     desc: 'Direct-to-consumer brands disrupting traditional retail.',
-    image: '/images/focus-ecommerce.jpg'
+    image: '/images/focus-ecommerce.png'
   },
   {
     title: 'Impact & Sustainability',
     desc: 'Mission-driven ventures creating positive change.',
-    image: '/images/focus-impact.jpg'
+    image: '/images/focus-impact.png'
   },
   {
     title: 'HealthTech & EdTech',
     desc: 'Innovation in healthcare and education delivery.',
-    image: '/images/focus-health.jpg'
+    image: '/images/focus-health.png'
   },
 ];
+
+// Google Form URL for applications
+const GOOGLE_FORM_URL = process.env.NEXT_PUBLIC_GOOGLE_FORM_URL || 'https://forms.google.com/';
 
 export default function Home() {
   const handleMouseMove = (e: MouseEvent<HTMLDivElement | HTMLAnchorElement>) => {
@@ -88,18 +91,20 @@ export default function Home() {
               </p>
 
               <div className={styles.heroActions} data-aos="fade-up" data-aos-delay="300">
-                <Link
-                  href="/"
+                <a
+                  href={GOOGLE_FORM_URL}
                   className={styles.btnPrimary}
                   onMouseMove={handleMouseMove}
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <span>Apply for Funding</span>
                   <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                     <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
-                </Link>
+                </a>
                 <Link
-                  href="/"
+                  href="/about"
                   className={styles.btnGlass}
                   onMouseMove={handleMouseMove}
                 >
@@ -209,9 +214,11 @@ export default function Home() {
                 </p>
               </div>
               <a
-                href="mailto:pitch@billenniumdivas.fund"
+                href={GOOGLE_FORM_URL}
                 className={styles.btnPrimary}
                 onMouseMove={handleMouseMove}
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <span>Submit Your Pitch</span>
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none">

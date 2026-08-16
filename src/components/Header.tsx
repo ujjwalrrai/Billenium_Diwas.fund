@@ -10,9 +10,12 @@ const NAV_LINKS = [
   { href: '/', label: 'Home' },
   { href: '/about', label: 'About' },
   { href: '/women-power', label: 'Women Power' },
-  { href: 'https://billenniumdivas.mmbx.in', label: 'Member Login' },
+  // { href: 'https://billenniumdivas.mmbx.in', label: 'Member Login' },
   { href: '/contact', label: 'Contact' },
 ];
+
+// Google Form URL for applications
+const GOOGLE_FORM_URL = process.env.NEXT_PUBLIC_GOOGLE_FORM_URL || 'https://forms.google.com/';
 
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -78,14 +81,16 @@ export default function Header() {
               {link.label}
             </Link>
           ))}
-          <Link
-            href="https://event.billenniumdivas.fund/"
+          <a
+            href={GOOGLE_FORM_URL}
             className={styles.mobileCta}
             onClick={() => setOpen(false)}
+            target="_blank"
+            rel="noopener noreferrer"
             style={{ transitionDelay: open ? `${80 + NAV_LINKS.length * 45}ms` : '0ms' }}
           >
-            Nominate Now
-          </Link>
+            Apply Now
+          </a>
         </div>
       </div>
     </>
@@ -116,9 +121,14 @@ export default function Header() {
             </ul>
           </nav>
 
-          <Link href="https://event.billenniumdivas.fund/" className={styles.cta}>
-            <span>Nominate Now</span>
-          </Link>
+          <a 
+            href={GOOGLE_FORM_URL} 
+            className={styles.cta}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span>Apply Now</span>
+          </a>
 
           <button
             className={`${styles.menuBtn} ${open ? styles.menuBtnOpen : ''}`}

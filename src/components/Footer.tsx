@@ -42,7 +42,7 @@ export default function Footer() {
             <ul className={styles.links}>
               <li><a href="mailto:info@billenniumdivas.fund">info@billenniumdivas.fund</a></li>
               <li><a href="mailto:pitch@billenniumdivas.fund">pitch@billenniumdivas.fund</a></li>
-              <li><a href="https://billenniumdivas.mmbx.in">Member Login</a></li>
+              {/* <li><a href="https://billenniumdivas.mmbx.in">Member Login</a></li> */}
             </ul>
           </div>
 

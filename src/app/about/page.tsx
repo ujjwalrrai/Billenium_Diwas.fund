@@ -6,6 +6,9 @@ import styles from './about.module.css';
 
 export const metadata: Metadata = { title: 'About – Billennium Divas' };
 
+// Google Form URL for applications
+const GOOGLE_FORM_URL = process.env.NEXT_PUBLIC_GOOGLE_FORM_URL || 'https://forms.google.com/';
+
 const MILESTONES = [
   {
     year: '2017',
@@ -90,7 +93,7 @@ export default function AboutPage() {
                 and built for and by women.
               </p>
 
-              <a href="mailto:pitch@billenniumdivas.fund" className={styles.btnPrimary}>
+              <a href={GOOGLE_FORM_URL} className={styles.btnPrimary}>
                 Submit a Pitch Deck
                 <svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true">
                   <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />

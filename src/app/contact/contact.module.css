@@ -49,6 +49,10 @@
   50% { transform: translate(30px, -30px) scale(1.1); }
 }
 
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
 .grid {
   position: relative;
   z-index: 1;
