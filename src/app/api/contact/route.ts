@@ -32,20 +32,29 @@ export async function POST(request: NextRequest) {
     const user_agent = request.headers.get('user-agent') || 'unknown'
 
     // Insert contact message into Supabase
-    const { data, error } = await supabase
-      .from('contact_messages')
-      .insert([
-        {
-          name: name.trim(),
-          email: email.trim().toLowerCase(),
-          message: message.trim(),
-          ip_address,
-          user_agent,
-          status: 'new'
-        }
-      ])
+    type ContactMessageRow = {
+      id: string
+      created_at: string
+      name: string
+      email: string
+      message: string
+      status: 'new' | 'read' | 'replied'
+      ip_address: string | null
+      user_agent: string | null
+    }
+
+    const { data, error } = await ((supabase
+      .from('contact_messages') as any)
+      .insert({
+        name: name.trim(),
+        email: email.trim().toLowerCase(),
+        message: message.trim(),
+        ip_address,
+        user_agent,
+        status: 'new' as const
+      })
       .select()
-      .single()
+      .single() as Promise<{ data: ContactMessageRow | null; error: any }>)
 
     if (error) {
       console.error('Supabase error:', error)
@@ -58,7 +67,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({
       success: true,
       message: 'Message submitted successfully',
-      id: data.id
+      id: data?.id
     })
 
   } catch (error) {

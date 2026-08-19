@@ -207,6 +207,38 @@ export interface Database {
           notes?: string | null
         }
       }
+      contact_messages: {
+        Row: {
+          id: string
+          created_at: string
+          name: string
+          email: string
+          message: string
+          status: 'new' | 'read' | 'replied'
+          ip_address: string | null
+          user_agent: string | null
+        }
+        Insert: {
+          id?: string
+          created_at?: string
+          name: string
+          email: string
+          message: string
+          status?: 'new' | 'read' | 'replied'
+          ip_address?: string | null
+          user_agent?: string | null
+        }
+        Update: {
+          id?: string
+          created_at?: string
+          name?: string
+          email?: string
+          message?: string
+          status?: 'new' | 'read' | 'replied'
+          ip_address?: string | null
+          user_agent?: string | null
+        }
+      }
     }
     Views: {
       [_ in never]: never
