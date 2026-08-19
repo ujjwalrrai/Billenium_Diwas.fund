@@ -182,7 +182,7 @@
 
 .fundImageWrapper {
   position: relative;
-  width: 100%;
+  width: 90%;
   border-radius: 24px;
   overflow: hidden;
   aspect-ratio: 4 / 5;
@@ -190,10 +190,11 @@
   align-items: center;
   justify-content: center;
   transform: translateX(90px);
+  margin-left: 42px;
 }
 
 .fundImage {
-  width: 150%;
+  width: 140%;
   height: 110%;
   object-fit: cover;
   display: block;
