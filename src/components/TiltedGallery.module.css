@@ -173,8 +173,5 @@
 }
 
 /* Disable parallax scroll effect on mobile for better performance */
-@media (max-width: 768px) {
-  .galleryRow {
-    transform: translateX(0) !important;
-  }
-}
+/* NOTE: Do NOT override transform here — it would kill the CSS scroll animation.
+   The JS parallax is already skipped on mobile in TiltedGallery.tsx. */

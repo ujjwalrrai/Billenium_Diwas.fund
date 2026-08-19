@@ -100,6 +100,15 @@ export default function AboutPage() {
                 </svg>
               </a>
             </div>
+
+            {/* Image placeholder — replace src with your image path */}
+            <div className={styles.fundImageWrapper} data-aos="fade-up" data-aos-delay="150">
+              <img
+                src="/images/about/fund-hero1.png"
+                alt="Billennium Divas Fund"
+                className={styles.fundImage}
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -300,19 +309,17 @@ export default function AboutPage() {
           <div className={styles.ctaInner}>
             <span className={styles.eyebrowLight}>Ready to grow?</span>
             <h2 className={styles.ctaTitle}>
-              Apply for funding or nominate a{' '}
-              <span className={styles.gradientGold}>deserving founder</span>
+              Seeking Funding? Apply to Bring Your  a{' '}
+              <span className={styles.gradientGold}>Vision to Life</span>
             </h2>
             <div className={styles.ctaActions}>
-              <a href="mailto:pitch@billenniumdivas.fund" className={styles.btnPrimary}>
+              <a href={GOOGLE_FORM_URL} className={styles.btnPrimary}>
                 Submit Pitch Deck
                 <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true">
                   <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </a>
-              <a href="https://event.billenniumdivas.fund/" className={styles.btnGlass}>
-                Nominate Now
-              </a>
+              
             </div>
           </div>
         </div>

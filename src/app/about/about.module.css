@@ -180,6 +180,28 @@
   line-height: 1.75;
 }
 
+.fundImageWrapper {
+  position: relative;
+  width: 100%;
+  border-radius: 24px;
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateX(90px);
+}
+
+.fundImage {
+  width: 150%;
+  height: 110%;
+  object-fit: cover;
+  display: block;
+  opacity: 0.20;
+  /* Shows a placeholder look when the image hasn't been placed yet */
+  min-height: 300px;
+}
+
 .impactPanel {
   background: #fff;
   border: 1px solid rgba(26, 13, 31, 0.08);
@@ -842,6 +864,10 @@
   .fundGrid {
     grid-template-columns: 1fr;
     gap: 48px;
+  }
+
+  .fundImageWrapper {
+    display: none;
   }
 
   .boardGrid {
