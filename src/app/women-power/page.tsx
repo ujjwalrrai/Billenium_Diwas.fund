@@ -7,13 +7,22 @@ export const metadata: Metadata = { title: 'The Women Power – Billennium Divas
 // Fetch gallery images from Supabase
 async function getGalleryImages() {
   try {
-    const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
-    const res = await fetch(`${baseUrl}/api/gallery/images`, {
-      cache: 'no-store'
+    // Use relative URL for API calls - works in both dev and production
+    const baseUrl = process.env.NEXT_PUBLIC_APP_URL || '';
+    const apiUrl = baseUrl ? `${baseUrl}/api/gallery/images` : '/api/gallery/images';
+    
+    const res = await fetch(apiUrl, {
+      cache: 'no-store',
+      // Add headers for server-side fetches
+      ...(baseUrl && { 
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      })
     });
     
     if (!res.ok) {
-      console.error('Failed to fetch gallery images');
+      console.error('Failed to fetch gallery images:', res.status, res.statusText);
       return [];
     }
     

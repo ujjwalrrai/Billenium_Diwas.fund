@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import Image from 'next/image';
 import styles from './TiltedGallery.module.css';
 
 interface TiltedGalleryProps {
@@ -9,6 +10,7 @@ interface TiltedGalleryProps {
 
 export default function TiltedGallery({ images }: TiltedGalleryProps) {
   const [rows, setRows] = useState<string[][]>([]);
+  const [imageErrors, setImageErrors] = useState<Set<string>>(new Set());
   const rowRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
@@ -49,6 +51,22 @@ export default function TiltedGallery({ images }: TiltedGalleryProps) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const handleImageError = (imgUrl: string) => {
+    setImageErrors(prev => new Set(prev).add(imgUrl));
+    console.error('Failed to load image:', imgUrl);
+  };
+
+  // If no images, show placeholder
+  if (images.length === 0) {
+    return (
+      <div className={styles.gallery}>
+        <div className={styles.emptyState}>
+          <p>No gallery images available</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className={styles.gallery}>
       <div className={styles.galleryInner}>
@@ -62,15 +80,24 @@ export default function TiltedGallery({ images }: TiltedGalleryProps) {
               animationDirection: rowIdx % 2 === 0 ? 'normal' : 'reverse'
             }}
           >
-            {row.map((imgUrl, imgIdx) => (
-              <div key={`${rowIdx}-${imgIdx}`} className={styles.galleryItem}>
-                <img
-                  src={imgUrl}
-                  alt={`Gallery image ${imgIdx + 1}`}
-                  loading="lazy"
-                />
-              </div>
-            ))}
+            {row.map((imgUrl, imgIdx) => {
+              // Skip images that failed to load
+              if (imageErrors.has(imgUrl)) {
+                return null;
+              }
+
+              return (
+                <div key={`${rowIdx}-${imgIdx}`} className={styles.galleryItem}>
+                  {/* Use regular img for Supabase images as Next.js Image may have issues with remote patterns */}
+                  <img
+                    src={imgUrl}
+                    alt={`Gallery image ${imgIdx + 1}`}
+                    loading="lazy"
+                    onError={() => handleImageError(imgUrl)}
+                  />
+                </div>
+              );
+            })}
           </div>
         ))}
       </div>

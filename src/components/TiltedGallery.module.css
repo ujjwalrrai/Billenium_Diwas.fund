@@ -62,6 +62,15 @@
   display: block;
 }
 
+.emptyState {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+  color: #888;
+  font-size: 1.1rem;
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .gallery {
