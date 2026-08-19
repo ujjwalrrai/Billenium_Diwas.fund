@@ -384,7 +384,25 @@
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .heroSection {
-    padding: 80px 0 60px;
+    padding: 70px 20px 50px;
+  }
+
+  .heroContent {
+    padding: 0 10px;
+  }
+
+  .heroTitle {
+    font-size: clamp(2.2rem, 9vw, 3.5rem);
+    margin-bottom: 20px;
+  }
+
+  .heroLead {
+    font-size: clamp(1.1rem, 3.5vw, 1.35rem);
+    margin-bottom: 14px;
+  }
+
+  .heroTagline {
+    font-size: 1rem;
   }
 
   .statsSection,
@@ -392,11 +410,11 @@
   .featuresSection,
   .speakersSection,
   .partnersSection {
-    padding: 60px 0;
+    padding: 60px 20px;
   }
 
   .ctaSection {
-    padding: 80px 0;
+    padding: 80px 20px;
   }
 
   .featuresGrid {
@@ -412,13 +430,75 @@
 
   .statsGrid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 32px;
+    gap: 28px 20px;
+  }
+
+  .statNumber {
+    font-size: 3rem;
+  }
+
+  .statLabel {
+    font-size: 0.95rem;
+  }
+
+  .aboutContent {
+    padding: 0 10px;
+  }
+
+  .aboutTitle {
+    font-size: clamp(1.75rem, 5vw, 2.5rem);
+    margin-bottom: 32px;
+  }
+
+  .aboutContent p {
+    font-size: 1.05rem;
+    line-height: 1.75;
+  }
+
+  .ctaContent {
+    padding: 0 10px;
+  }
+
+  .ctaTitle {
+    font-size: clamp(2rem, 7vw, 3rem);
+    margin-bottom: 16px;
+  }
+
+  .ctaSubtext {
+    font-size: 1.1rem;
+    margin-bottom: 32px;
+  }
+
+  .ctaButton {
+    padding: 16px 36px;
+    font-size: 1rem;
+    width: 100%;
+    justify-content: center;
   }
 }
 
 @media (max-width: 480px) {
   .heroSection {
-    padding: 60px 0 40px;
+    padding: 50px 16px 40px;
+  }
+
+  .heroSection::before,
+  .heroSection::after {
+    width: 400px;
+    height: 400px;
+  }
+
+  .heroTitle {
+    font-size: 2rem;
+    line-height: 1.15;
+  }
+
+  .heroLead {
+    font-size: 1.05rem;
+  }
+
+  .heroTagline {
+    font-size: 0.95rem;
   }
 
   .statsSection,
@@ -426,11 +506,16 @@
   .featuresSection,
   .speakersSection,
   .partnersSection {
-    padding: 40px 0;
+    padding: 50px 16px;
   }
 
   .ctaSection {
-    padding: 60px 0;
+    padding: 60px 16px;
+  }
+
+  .ctaSection::before {
+    width: 500px;
+    height: 500px;
   }
 
   .speakerGrid,
@@ -439,11 +524,98 @@
   }
 
   .statsGrid {
-    grid-template-columns: 1fr;
-    gap: 24px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px 16px;
+  }
+
+  .statNumber {
+    font-size: 2.8rem;
+  }
+
+  .statLabel {
+    font-size: 0.9rem;
+  }
+
+  .aboutTitle {
+    font-size: 1.65rem;
+    margin-bottom: 28px;
+  }
+
+  .aboutContent p {
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+
+  .featureCard {
+    padding: 32px 24px;
+  }
+
+  .featureCard h3 {
+    font-size: 1.15rem;
+  }
+
+  .featureCard p {
+    font-size: 0.9rem;
+  }
+
+  .ctaTitle {
+    font-size: 1.85rem;
+    margin-bottom: 14px;
+  }
+
+  .ctaSubtext {
+    font-size: 1rem;
+    margin-bottom: 28px;
+  }
+
+  .ctaButton {
+    padding: 15px 32px;
+    font-size: 0.95rem;
+  }
+
+  .speakerName,
+  .partnerName {
+    padding: 16px 20px;
+    font-size: 0.95rem;
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 360px) {
+  .heroSection {
+    padding: 40px 12px 30px;
+  }
+
+  .heroTitle {
+    font-size: 1.75rem;
+  }
+
+  .heroLead {
+    font-size: 1rem;
+  }
+
+  .statsSection,
+  .aboutSection,
+  .ctaSection {
+    padding: 40px 12px;
+  }
+
+  .statsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px 12px;
   }
 
   .statNumber {
     font-size: 2.5rem;
+  }
+
+  .statLabel {
+    font-size: 0.85rem;
+  }
+
+  .ctaButton {
+    padding: 14px 28px;
+    font-size: 0.9rem;
   }
 }

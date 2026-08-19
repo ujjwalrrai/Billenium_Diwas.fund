@@ -132,15 +132,41 @@ ul, ol {
    RESPONSIVE
    =========================== */
 
+@media (max-width: 900px) {
+  .container {
+    padding: 0 28px;
+  }
+}
+
 @media (max-width: 768px) {
   .container {
     padding: 0 24px;
+  }
+  
+  body {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding: 0 20px;
   }
 }
 
 @media (max-width: 480px) {
   .container {
-    padding: 0 20px;
+    padding: 0 18px;
+  }
+  
+  body {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 360px) {
+  .container {
+    padding: 0 16px;
   }
 }
 

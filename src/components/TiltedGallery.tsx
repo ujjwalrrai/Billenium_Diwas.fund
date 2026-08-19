@@ -25,6 +25,13 @@ export default function TiltedGallery({ images }: TiltedGalleryProps) {
   }, [images]);
 
   useEffect(() => {
+    // Disable parallax on mobile for better performance
+    const isMobile = window.innerWidth <= 768;
+    
+    if (isMobile) {
+      return; // Skip parallax on mobile
+    }
+
     const handleScroll = () => {
       const scrollY = window.scrollY;
       
