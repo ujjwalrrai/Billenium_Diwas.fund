@@ -1,33 +1,60 @@
 import type { Metadata } from 'next';
 import TiltedGallery from '@/components/TiltedGallery';
 import styles from './women-power.module.css';
+import { createAdminClient } from '@/lib/supabase/server';
 
 export const metadata: Metadata = { title: 'The Women Power – Billennium Divas' };
 
-// Fetch gallery images from Supabase
+// Use ISR - regenerate page every 5 minutes
+export const revalidate = 300;
+
+// Fetch gallery images directly from Supabase
 async function getGalleryImages() {
   try {
-    // Use relative URL for API calls - works in both dev and production
-    const baseUrl = process.env.NEXT_PUBLIC_APP_URL || '';
-    const apiUrl = baseUrl ? `${baseUrl}/api/gallery/images` : '/api/gallery/images';
+    const supabase = createAdminClient();
     
-    const res = await fetch(apiUrl, {
-      cache: 'no-store',
-      // Add headers for server-side fetches
-      ...(baseUrl && { 
-        headers: {
-          'Content-Type': 'application/json',
-        }
-      })
-    });
+    // List all buckets to find Gallery bucket
+    const { data: buckets } = await supabase.storage.listBuckets();
+    const galleryBucket = buckets?.find(b => b.name.toLowerCase() === 'gallery');
     
-    if (!res.ok) {
-      console.error('Failed to fetch gallery images:', res.status, res.statusText);
+    if (!galleryBucket) {
+      console.error('Gallery bucket not found');
       return [];
     }
     
-    const data = await res.json();
-    return data.images || [];
+    // List files from Gallery bucket
+    const { data: files, error } = await supabase
+      .storage
+      .from(galleryBucket.name)
+      .list('', {
+        limit: 100,
+        sortBy: { column: 'created_at', order: 'asc' }
+      });
+    
+    if (error) {
+      console.error('Failed to fetch gallery images:', error);
+      return [];
+    }
+    
+    // Filter only image files
+    const imageFiles = files?.filter(file => {
+      const ext = file.name.toLowerCase();
+      return ext.endsWith('.jpg') || ext.endsWith('.jpeg') || 
+             ext.endsWith('.png') || ext.endsWith('.gif') || 
+             ext.endsWith('.webp');
+    }) || [];
+    
+    // Get public URLs for all images
+    const images = imageFiles.map(file => {
+      const { data } = supabase
+        .storage
+        .from(galleryBucket.name)
+        .getPublicUrl(file.name);
+      
+      return data.publicUrl;
+    });
+    
+    return images;
   } catch (error) {
     console.error('Error fetching gallery images:', error);
     return [];
