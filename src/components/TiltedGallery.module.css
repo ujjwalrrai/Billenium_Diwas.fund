@@ -2,10 +2,11 @@
   position: relative;
   width: 100%;
   min-height: 70vh;
-  margin-top: 90px; /* Account for fixed header */
+  margin-top: 70px; /* Reduced to match header height */
   overflow: hidden;
   background: linear-gradient(to bottom, #0a0a0a, #1a1a1a);
-  padding: 60px 0;
+  padding: 0; /* Remove top padding */
+  padding-bottom: 40px; /* Keep bottom padding */
   perspective: 1000px;
 }
 
@@ -15,7 +16,7 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
-  padding: 40px 0;
+  padding: 20px 0 40px; /* Reduced top padding, keep bottom */
 }
 
 .galleryRow {
