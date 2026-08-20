@@ -2,10 +2,10 @@
   position: relative;
   width: 100%;
   min-height: 70vh;
-  margin-top: 70px; /* Reduced to match header height */
+  margin-top: 0; /* Start right after header with no gap */
+  padding-top: 90px; /* Add padding equal to header height to prevent overlap */
   overflow: hidden;
   background: linear-gradient(to bottom, #0a0a0a, #1a1a1a);
-  padding: 0; /* Remove top padding */
   padding-bottom: 40px; /* Keep bottom padding */
   perspective: 1000px;
 }
