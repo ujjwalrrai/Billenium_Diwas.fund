@@ -88,7 +88,7 @@
 
   .galleryRow {
     gap: 14px;
-    animation: scrollRow 50s linear infinite;
+    animation: scrollRow 30s linear infinite; /* Faster - was 50s */
   }
 
   .galleryItem {
@@ -112,7 +112,7 @@
 
   .galleryRow {
     gap: 12px;
-    animation: scrollRow 60s linear infinite;
+    animation: scrollRow 35s linear infinite; /* Faster - was 60s */
   }
 
   .galleryItem {
@@ -142,7 +142,7 @@
 
   .galleryRow {
     gap: 10px;
-    animation: scrollRow 70s linear infinite;
+    animation: scrollRow 40s linear infinite; /* Faster - was 70s */
   }
 
   .galleryItem {
