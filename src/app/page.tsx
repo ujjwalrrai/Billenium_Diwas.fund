@@ -116,7 +116,7 @@ export default function Home() {
             <div className={styles.heroVisual} data-aos="fade-left" data-aos-delay="200">
               <div className={styles.heroImageWrapper}>
                 <Image
-                  src="/images/BD_group1.png"
+                  src="/images/BD_group.png"
                   alt="Billennium Divas Fund Event - Women Entrepreneurs"
                   fill
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 200vw, 45vw"
