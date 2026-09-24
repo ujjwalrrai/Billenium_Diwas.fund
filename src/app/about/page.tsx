@@ -33,21 +33,30 @@ const WHERE_WE_INVEST = [
 ];
 
 const BOARD = [
-  { name: 'Ms. Minal Kothari', role: 'Co-Founder & Director', image: '/images/board/minal-kothari.jpg' },
   { name: 'Mr. Bhavesh Kothari', role: 'Co-Founder & Director', image: '/images/board/bhavesh-kothari.jpg' },
+  { name: 'Ms. Minal Kothari', role: 'Co-Founder & Director', image: '/images/board/minal-kothari.jpg' },
 ];
 
 const ADVISORS = [
   { name: 'Shweta Shalini', image: '/images/advisors/shweta-shalini.jpg' },
   { name: 'Tapaswi Patel', image: '/images/advisors/tapaswi-patel.jpg' },
-  { name: 'Adhiraj Banerjee', image: '/images/advisors/adhiraj-banerjee.jpg' },
-  { name: 'Amit Singal', image: '/images/advisors/amit-singal.jpg' },
-  { name: 'Rajashri', image: '/images/advisors/rajashri.jpg' },
+  { name: 'Amit Singal', image: '/images/advisors/Amit-Singal.png' },
+  { name: 'Rajshri Rajshekhar', image: '/images/advisors/rajashri.jpg' },
   { name: 'Shubhangi Mitra', image: '/images/advisors/shubhangi-mitra.jpg' },
-  { name: 'Ajay Thakur', image: '/images/advisors/ajay-thakur.jpg' },
+  { name: 'Chintan Oza', image: '/images/advisors/Chintan-Oza.png' },
+  { name: 'Jyoti Tiwari', image: '/images/advisors/Jyoti-Tiwari.png' },
+  { name: 'Ajay Thakur', image: '/images/advisors/Ajay-Thakur.png' },
+  { name: 'Adhiraj Banerjee', image: '/images/advisors/Adhiraj-Banerjee.jpg' },
+  
 ];
 
 const PARTNERS = [
+  { name: 'MentorMyBoard', logo: '/images/partners/MentorMyBoard.png' },
+  { name: 'MET Education', logo: '/images/partners/MET-Education.png' },
+  { name: 'LaxmiGyaan', logo: '/images/partners/LaxmiGyaan.png' },
+  { name: 'Enlighten Capital', logo: '/images/partners/Enlighten-Capital.png' },
+  { name: 'Chanakya Aanvikshiki', logo: '/images/partners/Chanakya-Aanvikshiki.png' },
+  { name: 'UnleashYou Ventures', logo: '/images/partners/UnleashYou-Ventures.png' },
   { name: 'SSIP Gujarat', logo: '/images/partners/ssip.png' },
   { name: 'AP Innovation Society', logo: '/images/partners/ap-innovation.png' },
   { name: 'AIC RAISE', logo: '/images/partners/aic-raise.png' },
@@ -68,7 +77,7 @@ const INITIATIVES = [
   },
 ];
 
-const EVENTS = ['Women Power', 'W-S.I.S', 'DEBOOT'];
+const EVENTS = ['Women Power', 'W-S.I.S', 'DEBOOT','Impact Creator Summit'];
 
 export default function AboutPage() {
   return (

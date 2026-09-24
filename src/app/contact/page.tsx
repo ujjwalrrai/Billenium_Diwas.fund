@@ -13,20 +13,12 @@ const OFFICES = [
       'CBD Belapur, Navi Mumbai, Maharashtra – 400614',
     ],
   },
-  {
-    city: 'Ahmedabad',
-    lines: [
-      'C-326 Siddhivinayak Business Tower, Kataria Automobiles Rd,',
-      'Makarba, Ahmedabad, Gujarat – 380051',
-    ],
-  },
 ];
 
 const CONTACTS = [
   { label: 'General inquiries', email: 'info@billenniumdivas.fund' },
   { label: 'Pitch decks', email: 'pitch@billenniumdivas.fund' },
-  { label: 'Mentor relations — Bhavesh Kothari', email: 'bhavesh.kothari@billenniumdivas.fund' },
-  { label: 'Investor relations — Pratik Lalani', email: 'pratik.lalani@billenniumdivas.fund' },
+
 ];
 
 export default function ContactPage() {

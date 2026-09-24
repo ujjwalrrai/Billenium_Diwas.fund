@@ -20,8 +20,6 @@
   position: relative;
 }
 
-/* First section on the page sits right under a sticky header —
-   give it extra top clearance so eyebrow/title aren't hidden behind the nav */
 .firstSection {
   padding-top: 160px;
 }
@@ -200,7 +198,6 @@
   object-fit: cover;
   display: block;
   opacity: 0.20;
-  /* Shows a placeholder look when the image hasn't been placed yet */
   min-height: 300px;
 }
 
@@ -514,10 +511,10 @@
 }
 
 .photoCircle {
-  width: 120px;
-  height: 120px;
+  width: 168px;
+  height: 168px;
   border-radius: 50%;
-  margin: 0 auto 18px;
+  margin: 0 auto 22px;
   box-shadow: 0 10px 28px rgba(236, 72, 153, 0.25);
 }
 
@@ -565,30 +562,30 @@
 }
 
 /* ===========================
-   ADVISORY BOARD
+   ADVISORY BOARD — 4-column grid, bigger portraits
    =========================== */
 .advisoryGrid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 36px 28px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 48px 32px;
+  max-width: 1080px;
+  margin: 0 auto;
 }
 
 .advisorCard {
-  flex: 0 1 190px;
   text-align: center;
 }
 
 .advisorName {
   font-family: var(--font-playfair);
   font-style: italic;
-  font-size: 16px;
+  font-size: 19px;
   color: #1a0d1f;
   margin-bottom: 6px;
 }
 
 .advisorTag {
-  font-size: 10.5px;
+  font-size: 11px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -597,9 +594,6 @@
 
 /* ===========================
    PARTNERS — static logo grid
-   (deliberately not a marquee — Testimonials and MediaStrip
-   already own that pattern; this section reads as a settled
-   wall of trust, not another scrolling strip)
    =========================== */
 .partnersGrid {
   display: flex;
@@ -875,6 +869,11 @@
   .boardGrid {
     max-width: 480px;
   }
+
+  .advisoryGrid {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 780px;
+  }
 }
 
 @media (max-width: 780px) {
@@ -909,6 +908,17 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 24px;
     max-width: 380px;
+  }
+
+  .advisoryGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 36px 24px;
+    max-width: 520px;
+  }
+
+  .photoCircle {
+    width: 140px;
+    height: 140px;
   }
 }
 
@@ -1079,17 +1089,19 @@
     flex-direction: column;
   }
 
-  .advisorCard {
-    flex: 0 1 140px;
+  .advisoryGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px 16px;
   }
 
   .advisorName {
-    font-size: 14.5px;
+    font-size: 15px;
   }
 
   .photoCircle {
-    width: 96px;
-    height: 96px;
+    width: 108px;
+    height: 108px;
+    margin-bottom: 14px;
   }
 
   .partnersGrid {
@@ -1118,5 +1130,32 @@
 
   .photoPortrait {
     max-width: 110px;
+  }
+}
+.advisoryGrid .advisorCard:last-child:nth-child(4n+1) {
+  grid-column: 1 / -1;
+  justify-self: center;
+}
+@media (max-width: 1024px) {
+  .advisoryGrid .advisorCard:last-child:nth-child(4n+1) {
+    grid-column: auto;
+    justify-self: auto;
+  }
+
+  .advisoryGrid .advisorCard:last-child:nth-child(3n+1) {
+    grid-column: 1 / -1;
+    justify-self: center;
+  }
+}
+
+@media (max-width: 780px) {
+  .advisoryGrid .advisorCard:last-child:nth-child(3n+1) {
+    grid-column: auto;
+    justify-self: auto;
+  }
+
+  .advisoryGrid .advisorCard:last-child:nth-child(2n+1) {
+    grid-column: 1 / -1;
+    justify-self: center;
   }
 }

@@ -85,9 +85,7 @@ export default function Home() {
               </h1>
 
               <p className={styles.heroSubtitle} data-aos="fade-up" data-aos-delay="200">
-                We don't just fund startups. We build ecosystems. Billennium Divas Fund combines
-                capital, mentorship, and network access to help women entrepreneurs scale faster,
-                grow smarter, and win bigger.
+                We empower women who are changing the world through entrepreneurship and innovation. Beyond capital, we provide access to mentors, advisors, industry experts, and strategic networks to help women-led ventures scale faster, grow stronger, and create a better future.
               </p>
 
               <div className={styles.heroActions} data-aos="fade-up" data-aos-delay="300">
@@ -152,7 +150,7 @@ export default function Home() {
                 </p>
                 <p className={styles.manifestoPara}>
                   <strong>Billennium Divas changes that.</strong> We're not another fund that
-                  writes checks and disappears. We're an integrated platform that aligns
+                  writes cheques and disappears. We're an integrated platform that aligns
                   everything a woman founder needs to not just survive, but <em className={styles.highlightText}>thrive</em>—and
                   delivers it cohesively, at every stage.
                 </p>

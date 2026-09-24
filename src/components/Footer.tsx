@@ -51,9 +51,6 @@ export default function Footer() {
             <p className={styles.contactLine}>
               Navi Mumbai — Sector 29, Parsik Hill Rd, CBD Belapur, Maharashtra 400614
             </p>
-            <p className={styles.contactLine}>
-              Ahmedabad — Siddhivinayak Business Tower, Makarba, Gujarat 380051
-            </p>
           </div>
         </div>
 
